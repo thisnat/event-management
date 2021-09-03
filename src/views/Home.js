@@ -1,9 +1,11 @@
-import EventCard from "../components/card/EventCard";
+import EventShowcase from "../components/card/EventShowcase";
+import AllEvent from "../components/AllEvent";
 
 const Home = () => {
     return (
-        <div className="container my-4">
-            <h1 className="lang-th">hello, waltz</h1>
+        <div className="my-4">
+            <EventShowcase />
+            <AllEvent />
         </div>
     );
 };

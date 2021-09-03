@@ -10,13 +10,21 @@
     border-radius: 360px;
 }
 
+.gradient-text {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .event-card {
-    margin: 1rem;
+    margin: 0.8rem 0px;
     padding: 1rem;
     border-radius: 1rem;
     color: white;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    background: linear-gradient(to right, #00b09b, #96c93d);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    background: #32B141;
 }
 
 .event-card-emoji{
@@ -29,4 +37,30 @@
 
 .event-card-detail {
     font-weight: lighter;
+}
+
+.event-showcase {
+    padding: 2rem 3rem;
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+}
+
+.event-showcase-host{
+    text-align: center;
+}
+
+.event-showcase-host img{
+    width: 200px;
+    height: 200px;
+    border-radius: 360px;
+}
+
+.event-showcase-detail {
+    font-size: 2rem;
+}
+
+.btn-totop {
+    border: none;
+    font-weight: bolder;
+    color: #002690;
 }
