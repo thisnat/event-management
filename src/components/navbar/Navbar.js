@@ -21,6 +21,9 @@ const Navbar = () => {
                     <ul className="navbar-nav">
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span className="navbar-brand" href="/">
+                                    <img className="navbar-profile-pic " src="https://avatars.dicebear.com/api/open-peeps/admin.svg?backgroundColor=%23f0f0f0" alt="profile" />
+                                </span>
                                 Username
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
