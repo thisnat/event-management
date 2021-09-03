@@ -1,22 +1,24 @@
 import axios from 'axios';
 import store from '../store';
 
+import { FETCHING_USER, FETCHED_USER, FETCH_ERROR_USER} from '../constant/actionTypes'
+
 const fetchingUser = () => {
     return {
-        type : 'FETCHING_USER'
+        type : FETCHING_USER
     }
 }
 
 const fetchedUser = ( data ) => {
     return {
-        type : 'FETCHED_USER',
+        type : FETCHED_USER,
         payload : data
     }
 }
 
 const fetchErrorUser = () => {
     return {
-        type : 'FETCHING_ERROR_USER'
+        type : FETCH_ERROR_USER
     }
 }
 

@@ -1,3 +1,5 @@
+import { FETCHING_USER, FETCHED_USER, FETCH_ERROR_USER} from '../constant/actionTypes'
+
 const initialState = {
     userData : {},
     isFetching : false,
@@ -6,16 +8,16 @@ const initialState = {
 
 const UserReducer = (state = initialState,action) => {
     switch(action.type) {
-        case 'FETCHING_USER' :
+        case FETCHING_USER :
             return Object.assign({},state,{
                 isFetching : true,
             })
-        case 'FETCHED_USER' :
+        case FETCHED_USER :
             return Object.assign({},state,{
                 userData : action.payload,
                 isFetching : false,
             })
-        case 'FETCH_ERROR_USER' :
+        case FETCH_ERROR_USER :
             return Object.assign({},state,{
                 isError : true,
                 isFetching : false
