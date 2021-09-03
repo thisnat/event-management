@@ -23,8 +23,7 @@
     padding: 1rem;
     border-radius: 1rem;
     color: white;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    background: #32B141;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px 0px;
 }
 
 .event-card-emoji{
@@ -57,10 +56,4 @@
 
 .event-showcase-detail {
     font-size: 2rem;
-}
-
-.btn-totop {
-    border: none;
-    font-weight: bolder;
-    color: #002690;
 }

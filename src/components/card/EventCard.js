@@ -1,13 +1,13 @@
-const EventCard = () => {
+const EventCard = ({ data }) => {
     return (
         <a href="/" style={{textDecoration:"none"}}>
-            <div className="event-card">
-                <p className="event-card-host">@foodfestbkk</p>
-                <p className="event-card-emoji">🍣</p>
-                <h4 className="lang-th">International Food festival 2021</h4>
+            <div className="event-card" style={{backgroundColor:data.color}}>
+                <p className="event-card-host">@{data.host}</p>
+                <p className="event-card-emoji">{data.emoji}</p>
+                <h4 className="lang-th">{data.name}</h4>
                 <div className="event-card-detail lang-th">
-                    <p className="mb-0">ลงทะบียนแล้ว 78 คน</p>
-                    <p>จองพื้นที่แล้ว 12/24 พื้นที่</p>
+                    <p className="mb-0">ลงทะบียนแล้ว {data.regis} คน</p>
+                    <p>จองพื้นที่แล้ว {data.reserve} พื้นที่</p>
                 </div>
             </div>
         </a>
