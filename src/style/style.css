@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400&display=swap');
+
+.lang-th {
+    font-family: 'Kanit';
+}
+
+.event-card {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    background: linear-gradient(to right, #00b09b, #96c93d);
+}
+
+.event-card-emoji{
+    font-size: 3rem;
+}
+
+.event-card-host{
+    float: right;
+}
+
+.event-card-detail {
+    font-weight: lighter;
+}
