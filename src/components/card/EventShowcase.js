@@ -1,3 +1,14 @@
+import styled from "styled-components";
+
+const DetailBtn = styled.button`
+color : white;
+background-color : black;
+font-size : 1.1rem;
+padding : 0.7rem 2rem;
+border-radius : 1rem;
+border : none;
+`
+
 const EventShowcase = () => {
     return (
         <div className="container-sm mt-4">
@@ -9,7 +20,7 @@ const EventShowcase = () => {
                     <div className="event-showcase-detail lang-th">
                         <p className="mb-0">เข้าร่วมแล้ว 15 คน</p>
                         <p>จองพื้นที่แล้ว 7 คน</p>
-                        <button className="btn btn-primary">รายละเอียด</button>
+                        <DetailBtn>รายละเอียด</DetailBtn>
                     </div>
                 </div>
                 <div className="col-sm-4 mt-5 event-showcase-host">
