@@ -3,7 +3,7 @@ import { eventList } from "../constant/EventMock";
 
 const AllEvent = () => {
     return (
-        <div className="container lg mt-4">
+        <div className="container lg mt-5">
             <h2 className="lang-th">🌐 งานอีเว้นท์ทั้งหมด</h2>
             <div className="row mt-4">
                 {

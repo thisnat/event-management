@@ -2,7 +2,7 @@ const Navbar = () => {
     return (
         <nav className="navbar sticky-top navbar-expand-lg navbar-dark" style={{backgroundColor:"black"}}>
             <div className="container-fluid">
-                <a className="navbar-brand" href="/">🎉 event~mangement</a>
+                <a className="navbar-brand" href="/" style={{marginLeft:"10%"}}>🎉 event~mangement</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -22,11 +22,11 @@ const Navbar = () => {
                     </ul>
                     <ul className="navbar-nav">
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a className="nav-link active dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span className="navbar-brand" href="/">
                                     <img className="navbar-profile-pic " src="https://avatars.dicebear.com/api/micah/adminlnwza.svg?background=%23ede1be" alt="profile" />
                                 </span>
-                                Username
+                                @Username
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a className="dropdown-item" href="/">ข้อมูลบัญชี</a></li>

@@ -1,7 +1,8 @@
 import Home from './Home';
+import Login from './Login';
 
 const views = {
-    Home
+    Home, Login
 }
 
 export default views;

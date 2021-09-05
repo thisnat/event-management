@@ -6,11 +6,12 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Navbar />
       <Router>
         <Switch>
           <Route exact path="/" component={Views.Home} />
+          <Route exact path="/login" component={Views.Login} />
         </Switch>
       </Router>
       <Footer />
