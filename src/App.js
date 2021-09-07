@@ -12,6 +12,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Views.Home} />
           <Route exact path="/login" component={Views.Login} />
+          <Route exact path="/register" component={Views.Register} />
         </Switch>
       </Router>
       <Footer />

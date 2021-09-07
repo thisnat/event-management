@@ -7,6 +7,7 @@ font-size : 1.1rem;
 padding : 0.7rem 2rem;
 border-radius : 1rem;
 border : none;
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 `
 
 const EventShowcase = () => {
@@ -24,7 +25,7 @@ const EventShowcase = () => {
                     </div>
                 </div>
                 <div className="col-sm-4 mt-5 event-showcase-host">
-                    <img src="https://avatars.dicebear.com/api/micah/somethingbkk.svg?background=%23ede1be" alt="host" />
+                    <img src="https://avatars.dicebear.com/api/micah/adminlnwza.svg?background=%23ede1be" alt="host" />
                     <h2 className="mt-4">@somethingbkk</h2>
                 </div>
             </div>

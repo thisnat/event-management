@@ -40,10 +40,6 @@ footer {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px 0px;
 }
 
-.event-card-base {
-    text-decoration: none;
-}
-
 .event-card-emoji{
     font-size: 3rem;
 }

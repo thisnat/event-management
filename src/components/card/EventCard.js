@@ -1,6 +1,6 @@
 const EventCard = ({ data }) => {
     return (
-        <a href="/" className="event-card-base">
+        <a href="/" className="event-card-base" style={{textDecoration:"none"}}>
             <div className="event-card" style={{backgroundColor:data.color}}>
                 <p className="event-card-host">@{data.host}</p>
                 <p className="event-card-emoji">{data.emoji}</p>
