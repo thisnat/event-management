@@ -1,5 +1,7 @@
 # Event Management
-
+<div align="center">
+  <img src="https://i.imgur.com/1y1dg60.png" />
+</div>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
