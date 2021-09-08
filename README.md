@@ -2,6 +2,9 @@
 <div align="center">
   <img src="https://i.imgur.com/1y1dg60.png" />
 </div>
+
+Event Mangement app for CS-project.
+> server :  [here](https://github.com/thisnat/event-management-server)\
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
