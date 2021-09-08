@@ -3,7 +3,7 @@ const EventCard = ({ data }) => {
         <a href="/" className="event-card-base" style={{textDecoration:"none"}}>
             <div className="event-card" style={{backgroundColor:data.color}}>
                 <p className="event-card-host">@{data.host}</p>
-                <p className="event-card-emoji">{data.emoji}</p>
+                <p className="event-card-emoji" style={{marginLeft:5}}>{data.emoji}</p>
                 <h4 className="lang-th">{data.name}</h4>
                 <div className="event-card-detail lang-th">
                     <p className="mb-0">ลงทะบียนแล้ว {data.regis} คน</p>

@@ -12,11 +12,11 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 const EventShowcase = () => {
     return (
-        <div className="container-sm mt-4">
+        <div className="container-sm mt-4" style={{maxWidth:1100}}>
             <h2 className="lang-th">✨ งานอีเว้นท์ที่น่าสนใจ</h2>
             <div className="row event-showcase mt-4">
                 <div className="col-sm-8">
-                    <p style={{ fontSize: "5rem" }}>🏠</p>
+                    <p style={{ fontSize: "4.5rem" }}>🏠</p>
                     <p style={{ fontWeight: "bold" }} className="gradient-text">somtething market</p>
                     <div className="event-showcase-detail lang-th">
                         <p className="mb-0">เข้าร่วมแล้ว 15 คน</p>

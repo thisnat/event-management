@@ -1,12 +1,12 @@
 const Login = () => {
     return (
-        <div className="container lang-th" style={{ marginTop: "10%", maxWidth: 700 }}>
+        <div className="container lang-th" style={{ marginTop: "10%", maxWidth: 500 }}>
             <h1>เข้าสู่ระบบ</h1>
             <hr />
             <div>
                 <form>
                     <div className="mb-3">
-                        <label className="form-label">Email address</label>
+                        <label className="form-label">Username</label>
                         <input type="email" className="form-control" />
                     </div>
                     <div className="mb-3">
