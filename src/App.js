@@ -13,6 +13,7 @@ function App() {
           <Route exact path="/" component={Views.Home} />
           <Route exact path="/login" component={Views.Login} />
           <Route exact path="/register" component={Views.Register} />
+          <Route exact path="/event/:id" component={Views.Event} />
         </Switch>
       </Router>
       <Footer />

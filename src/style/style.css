@@ -29,7 +29,6 @@ footer {
 }
 
 .gradient-text {
-    font-size: 48px;
     font-weight: bold;
     background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
     background-clip: text;
