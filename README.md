@@ -1,6 +1,6 @@
 # Event Management
 <div align="center">
-  <img src="https://i.imgur.com/1y1dg60.png" />
+  <img src="https://i.imgur.com/CA2Kcxv.png" style="width:500px;" />
 </div>
 
 Event Mangement app for CS-project.
