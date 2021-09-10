@@ -15,7 +15,7 @@ const Action = () => {
                 <button className="btn btn-primary mt-2">จองพื้นที่</button>
             </div>
             <div>
-                <button className="btn btn-secondary mt-2">รายละเอียดเพิ่มเติม</button>
+                <button className="btn btn-secondary mt-2">ผู้เข้าร่วม</button>
             </div>
         </div>
     );

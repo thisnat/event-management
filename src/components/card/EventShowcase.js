@@ -15,10 +15,10 @@ const EventShowcase = () => {
         <div className="container-sm mt-4" style={{maxWidth:1100}}>
             <h2 className="lang-th">✨ งานอีเว้นท์ที่น่าสนใจ</h2>
             <div className="row event-showcase mt-4">
-                <div className="col-sm-8">
+                <div className="col-sm-8 lang-th">
                     <p style={{ fontSize: "4.5rem" }}>🏠</p>
-                    <p style={{ fontWeight: "bold", fontSize:48 }} className="gradient-text">somtething market</p>
-                    <div className="event-showcase-detail lang-th">
+                    <p style={{ fontSize:48 }} className="gradient-text">something market</p>
+                    <div className="event-showcase-detail">
                         <p className="mb-0">เข้าร่วมแล้ว 15 คน</p>
                         <p>จองพื้นที่แล้ว 7 คน</p>
                         <DetailBtn>รายละเอียด</DetailBtn>
