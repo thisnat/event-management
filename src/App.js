@@ -15,6 +15,8 @@ function App() {
           <Route path="/register" component={Views.Register} />
           <Route exact path="/event/:id" component={Views.Event} />
           <Route path="/host" component={Views.HostEvent} />
+          
+          <Route path="/test" component={Views.Test} />
         </Switch>
       </Router>
       <Footer />
