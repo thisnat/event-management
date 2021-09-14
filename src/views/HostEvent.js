@@ -30,12 +30,16 @@ const HostEvent = () => {
                     <div className="mb-3">
                         <label className="form-label">ชื่ออีเว้นท์</label>
                         <input type="text" className="form-control" onChange={(e) => {
-                            setData(Object.assign({}, data, { name: e.target.value }))
+                            if(e.target.value === ""){
+                                setData(Object.assign({}, data, { name: "????" }));
+                            } else {
+                                setData(Object.assign({}, data, { name: e.target.value }));
+                            }
                         }}/>
                     </div>
                     <div className="row mb-3">
                         <div className="col-md mb-3">
-                            <p>สีของอีเว้นท์</p>
+                            <p>สีอีเว้นท์</p>
                             <CirclePicker onChangeComplete={(color) => {
                                 setData(Object.assign({}, data, { color: color.hex }))
                             }} />
@@ -48,7 +52,10 @@ const HostEvent = () => {
                             }}>เลือก Emoji</button>
                             {
                                 emojiOpen
-                                ? <Picker onSelect={(emoji) => { setData(Object.assign({}, data, { emoji: emoji.native })) }}/>
+                                ? <Picker onSelect={(emoji) => { 
+                                    setData(Object.assign({}, data, { emoji: emoji.native }));
+                                    setEmojiOpen(!emojiOpen);
+                                }}/>
                                 : null
                             }
                         </div>

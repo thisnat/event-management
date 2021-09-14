@@ -24,7 +24,7 @@ const Navbar = () => {
                                 @Username
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a className="dropdown-item" href="/" style={{ color: "green" }}>🎉 host an event!</a></li>
+                                <li><a className="dropdown-item" href="/host" style={{ color: "green" }}>🎉 สร้างงานอีเว้นท์</a></li>
                                 <li><a className="dropdown-item" href="/">ข้อมูลบัญชี</a></li>
                                 <li><a className="dropdown-item" href="/" style={{ color: "red" }}>ออกจากระบบ</a></li>
                             </ul>
