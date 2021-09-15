@@ -52,7 +52,7 @@ const HostEvent = () => {
                             }}>เลือก Emoji</button>
                             {
                                 emojiOpen
-                                ? <Picker onSelect={(emoji) => { 
+                                ? <Picker emoji="tada" title="" native="true" onSelect={(emoji) => { 
                                     setData(Object.assign({}, data, { emoji: emoji.native }));
                                     setEmojiOpen(!emojiOpen);
                                 }}/>
