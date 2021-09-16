@@ -20,7 +20,9 @@ const Register = () => {
         axios.post(`${API_BASE}/user/register`, user).then(() => {
             alert("register done");
             window.location.replace("/");
-        })
+        }).catch(err => {
+            alert(err);
+        });
     }
 
     return (

@@ -2,16 +2,19 @@ import { useState } from 'react';
 import EventCard from '../components/card/EventCard';
 
 import { CirclePicker } from 'react-color';
+import { colorList } from '../constant/color';
 
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 
 const HostEvent = () => {
 
+    const userData = JSON.parse(localStorage.getItem('userData'));
+
     const [data, setData] = useState({
         emoji: "🎉",
         name: "????",
-        host: "Username",
+        host: userData.username,
         color: "#307fe2",
         regis: "??",
         reserve: "??/??"
@@ -40,7 +43,7 @@ const HostEvent = () => {
                     <div className="row mb-3">
                         <div className="col-md mb-3">
                             <p>สีอีเว้นท์</p>
-                            <CirclePicker onChangeComplete={(color) => {
+                            <CirclePicker colors={colorList} onChangeComplete={(color) => {
                                 setData(Object.assign({}, data, { color: color.hex }))
                             }} />
                         </div>
@@ -52,7 +55,7 @@ const HostEvent = () => {
                             }}>เลือก Emoji</button>
                             {
                                 emojiOpen
-                                ? <Picker emoji="tada" title="" native="true" onSelect={(emoji) => { 
+                                ? <Picker emoji="tada" title="Pick your emoji !" native="true" onSelect={(emoji) => { 
                                     setData(Object.assign({}, data, { emoji: emoji.native }));
                                     setEmojiOpen(!emojiOpen);
                                 }}/>

@@ -25,7 +25,7 @@ const EventShowcase = () => {
                     </div>
                 </div>
                 <div className="col-sm-4 mt-5 event-showcase-host">
-                    <img src="https://avatars.dicebear.com/api/micah/adminlnwza.svg?background=%23ede1be" alt="host" />
+                    <img src="https://avatars.dicebear.com/api/micah/lnwza555.svg?background=%23ede1be" alt="host" />
                     <h2 className="mt-4">@somethingbkk</h2>
                 </div>
             </div>

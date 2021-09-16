@@ -1,4 +1,13 @@
 const Navbar = () => {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+
+    const handleLogoutBtn = (e) => {
+        e.preventDefault();
+
+        localStorage.removeItem('userData');
+        window.location.replace("/");
+    }
+
     return (
         <nav className="navbar sticky-top navbar-expand-lg navbar-dark" style={{backgroundColor:"black"}}>
             <div className="container-fluid">
@@ -19,14 +28,14 @@ const Navbar = () => {
                         <li className="nav-item dropdown">
                             <a className="nav-link active dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span className="navbar-brand" href="/">
-                                    <img className="navbar-profile-pic " src="https://avatars.dicebear.com/api/micah/adminlnwza.svg?background=%23ede1be" alt="profile" />
+                                    <img className="navbar-profile-pic " src={userData.pic} alt="profile" />
                                 </span>
-                                @Username
+                                @{userData.username}
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a className="dropdown-item" href="/host" style={{ color: "green" }}>🎉 สร้างงานอีเว้นท์</a></li>
                                 <li><a className="dropdown-item" href="/">ข้อมูลบัญชี</a></li>
-                                <li><a className="dropdown-item" href="/" style={{ color: "red" }}>ออกจากระบบ</a></li>
+                                <li><a className="dropdown-item" href="/" style={{ color: "red" }} onClick={handleLogoutBtn}>ออกจากระบบ</a></li>
                             </ul>
                         </li>
                     </ul>
