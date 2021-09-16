@@ -1,11 +1,12 @@
+import { logOut } from "../../service/api";
+
 const Navbar = () => {
     const userData = JSON.parse(localStorage.getItem('userData'));
 
     const handleLogoutBtn = (e) => {
         e.preventDefault();
 
-        localStorage.removeItem('userData');
-        window.location.replace("/");
+        logOut();
     }
 
     return (
@@ -34,7 +35,7 @@ const Navbar = () => {
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a className="dropdown-item" href="/host" style={{ color: "green" }}>🎉 สร้างงานอีเว้นท์</a></li>
-                                <li><a className="dropdown-item" href="/">ข้อมูลบัญชี</a></li>
+                                <li><a className="dropdown-item" href="/me">ข้อมูลบัญชี</a></li>
                                 <li><a className="dropdown-item" href="/" style={{ color: "red" }} onClick={handleLogoutBtn}>ออกจากระบบ</a></li>
                             </ul>
                         </li>

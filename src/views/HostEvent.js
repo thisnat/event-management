@@ -65,7 +65,7 @@ const HostEvent = () => {
                     </div>
                     <div className="mb-3">
                         <label className="form-label">รายละเอียด</label>
-                        <input type="email" className="form-control" />
+                        <input type="text" className="form-control" />
                     </div>
                     <button type="submit" className="btn btn-success">สร้างอีเว้นท์</button>
                 </form>
