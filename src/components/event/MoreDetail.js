@@ -1,4 +1,4 @@
-const Action = () => {
+const MoreDetail = () => {
     return (
         <div className="p-2 lang-th">
             <h4>รายละเอียดงาน</h4>
@@ -9,16 +9,10 @@ const Action = () => {
                 <p>เวลาเปิดจองพื้นที่ : 4 June 2021, 19.00</p>
             </div>
             <div>
-                <button className="btn btn-success">เข้าร่วม</button>
-            </div>
-            <div>
-                <button className="btn btn-primary mt-2">จองพื้นที่</button>
-            </div>
-            <div>
                 <button className="btn btn-secondary mt-2">ผู้เข้าร่วม</button>
             </div>
         </div>
     );
 };
 
-export default Action;
+export default MoreDetail;

@@ -26,15 +26,30 @@ const Account = () => {
     return (
         <div className="container my-5">
             <h1>your account</h1>
-            <div className="mt-4">
-                <ProfilePic src={user.pic} />
-                <div className="mt-4">
-                    <p>user id : {user._id}</p>
-                    <p>username : {user.username}</p>
-                    <p>name : {user.name}</p>
-                    <p>last name : {user.lastName}</p>
-                    <p>create at : {user.create_at}</p>
-                    <p>update at : {user.update_at}</p>
+            <div className="mt-5">
+                <div className="row">
+                    <div className="col-sm-4 mb-4" style={{ textAlign: "center" }} >
+                        <ProfilePic src={user.pic} />
+                        {
+                            user.isOrg
+                            ? <h2 className="mt-4 mb-0">{user.name}</h2>
+                            : <h2 className="mt-4 mb-0">{user.name} {user.lastName}</h2>
+                        }
+                        <p className="gradient-text mt-2" style={{ fontSize: 24 }}>@{user.username}</p>
+                    </div>
+                    <div className="col-sm-8 lang-th">
+                        {
+                            user.isOrg
+                                ? <span className="badge rounded-pill bg-primary">บัญชีองค์กร</span>
+                                : <span className="badge rounded-pill bg-secondary">บัญชีบุคคล</span>
+                        }
+                        <div className="mt-4">
+                            <p>id : {user._id}</p>
+                            <p>email : {user.email}</p>
+                            <p>create at : {user.create_at}</p>
+                            <p>update at : {user.update_at}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-import { API_BASE } from '../constant/api'
+import { API_BASE } from '../constant/api';
+import { successAlertRedirect } from '../service/alert';
 
 const Login = () => {
 
@@ -15,8 +16,8 @@ const Login = () => {
 
         axios.post(`${API_BASE}/user/login`, login).then(res => {
             localStorage.setItem('userData', JSON.stringify(res.data));
-            alert("เข้าสู่ระบบสำเร็จ");
-            window.location.replace("/");
+
+            successAlertRedirect("เข้าสู่ระบบสำเร็จ");
         }).catch(err => {
             alert(err.message);
         });

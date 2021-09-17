@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 import { API_BASE } from '../constant/api'
+import { successAlertRedirect } from "../service/alert";
 
 const Register = () => {
 
@@ -14,15 +15,20 @@ const Register = () => {
         password: ""
     })
 
+    const [confirmPassword, setConfirmpassword] = useState("");
+
     const handleSubmitBtn = (e) => {
         e.preventDefault();
 
-        axios.post(`${API_BASE}/user/register`, user).then(() => {
-            alert("register done");
-            window.location.replace("/");
-        }).catch(err => {
-            alert(err);
-        });
+        if (confirmPassword === user.password) {
+            axios.post(`${API_BASE}/user/register`, user).then(() => {
+                successAlertRedirect("ลงทะเบียนสำเร็จ");
+            }).catch(err => {
+                alert(err);
+            });
+        } else {
+            alert("password ไม่ตรงกัน")
+        }
     }
 
     return (
@@ -90,7 +96,9 @@ const Register = () => {
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Confirm Password</label>
-                        <input type="password" className="form-control" required />
+                        <input type="password" className="form-control" required onChange={(e) => {
+                            setConfirmpassword(e.target.value);
+                        }}/>
                     </div>
                     <button type="submit" className="btn btn-success">ลงทะเบียน</button>
                 </form>
