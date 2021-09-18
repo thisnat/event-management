@@ -1,26 +1,25 @@
 import axios from 'axios';
 import { API_BASE } from '../constant/api';
 
+import Cookies from 'js-cookie';
+
 function setHeader() {
     const user = localStorage.getItem('userData');
-    if (user) {
-        let userData = JSON.parse(user);
-        let token = userData.token;
+    const token = Cookies.get("token");
 
-        if (token) {
-            axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` }
-        } else {
-            console.log("token not found");
-            localStorage.removeItem('userData');
-            window.location.replace("/");
-        }
+    if (user || token ) {
+        axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` }
     } else {
         //focus this
-        console.log("userdata not found");
+        console.log("token not found");
+        Cookies.remove("token");
+        localStorage.removeItem('userData');
+        window.location.replace("/");
     }
 }
 
 export const logOut = () => {
+    Cookies.remove("token");
     localStorage.removeItem('userData');
     window.location.replace("/");
 }

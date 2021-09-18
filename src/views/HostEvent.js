@@ -32,13 +32,13 @@ const HostEvent = () => {
                 <form>
                     <div className="mb-3">
                         <label className="form-label">ชื่ออีเว้นท์</label>
-                        <input type="text" className="form-control" onChange={(e) => {
-                            if(e.target.value === ""){
+                        <input type="text" className="form-control" required onChange={(e) => {
+                            if (e.target.value === "") {
                                 setData(Object.assign({}, data, { name: "????" }));
                             } else {
                                 setData(Object.assign({}, data, { name: e.target.value }));
                             }
-                        }}/>
+                        }} />
                     </div>
                     <div className="row mb-3">
                         <div className="col-md mb-3">
@@ -55,17 +55,19 @@ const HostEvent = () => {
                             }}>เลือก Emoji</button>
                             {
                                 emojiOpen
-                                ? <Picker emoji="tada" title="Pick your emoji !" native="true" onSelect={(emoji) => { 
-                                    setData(Object.assign({}, data, { emoji: emoji.native }));
-                                    setEmojiOpen(!emojiOpen);
-                                }}/>
-                                : null
+                                    ? <div className="mt-2" style={{position:"absolute"}}>
+                                        <Picker emoji="tada" title="Pick your emoji !" native={true} onSelect={(emoji) => {
+                                            setData(Object.assign({}, data, { emoji: emoji.native }));
+                                            setEmojiOpen(!emojiOpen);
+                                        }} />
+                                    </div>
+                                    : null
                             }
                         </div>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">รายละเอียด</label>
-                        <input type="text" className="form-control" />
+                        <input type="text" className="form-control" required/>
                     </div>
                     <button type="submit" className="btn btn-success">สร้างอีเว้นท์</button>
                 </form>

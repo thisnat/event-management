@@ -17,7 +17,7 @@ const Event = (props) => {
                 <div className="col-sm-9">
                     <div style={{maxWidth:600, margin:"auto"}}>
                         <EventCard data={eventList[2]} />
-                        <div style={{textAlign:"center"}}>
+                        <div className="lang-th" style={{textAlign:"center"}}>
                             <button className="btn btn-success mt-2 me-3">เข้าร่วม</button>
                             <button className="btn btn-primary mt-2 me-3">จองพื้นที่</button>
                         </div>

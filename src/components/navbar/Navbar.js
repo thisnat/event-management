@@ -21,9 +21,6 @@ const Navbar = () => {
                         <li className="nav-item">
                             <a className="nav-link lang-th" href="/">My event</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link lang-th" href="/">ประวัติ</a>
-                        </li>
                     </ul>
                     <ul className="navbar-nav" style ={{marginRight:"10%"}}>
                         <li className="nav-item dropdown">

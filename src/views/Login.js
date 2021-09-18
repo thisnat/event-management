@@ -4,6 +4,8 @@ import axios from 'axios';
 import { API_BASE } from '../constant/api';
 import { successAlertRedirect } from '../service/alert';
 
+import Cookies from 'js-cookie';
+
 const Login = () => {
 
     const [login, setLogin] = useState({
@@ -15,7 +17,16 @@ const Login = () => {
         e.preventDefault();
 
         axios.post(`${API_BASE}/user/login`, login).then(res => {
-            localStorage.setItem('userData', JSON.stringify(res.data));
+            let clientData = {
+                email : res.data.email,
+                name : res.data.name,
+                lastname : res.data.lastName,
+                username : res.data.username,
+                pic : res.data.pic
+            }
+
+            localStorage.setItem('userData', JSON.stringify(clientData));
+            Cookies.set("token", res.data.token)
 
             successAlertRedirect("เข้าสู่ระบบสำเร็จ");
         }).catch(err => {

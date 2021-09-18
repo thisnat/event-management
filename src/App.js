@@ -5,10 +5,13 @@ import Navbar from './components/navbar/Navbar';
 import GuestNavbar from './components/navbar/GuestNavbar';
 import Footer from './components/Footer';
 
+import Cookies from 'js-cookie';
+
 function App() {
   const user = localStorage.getItem('userData');
+  const token = Cookies.get("token");
 
-  if (user) {
+  if (user || token) {
     return (
       <div className="App">
         <Navbar />
@@ -21,6 +24,7 @@ function App() {
             <Route path="/host" component={Views.HostEvent} />
             <Route path="/me" component={Views.Account} />
 
+            <Route component={Views.NotFound} />
             <Route path="/test" component={Views.Test} />
           </Switch>
         </Router>
@@ -38,6 +42,7 @@ function App() {
           <Route path="/register" component={Views.Register} />
           <Route exact path="/event/:id" component={Views.Event} />
 
+          <Route component={Views.NotFound} />
           <Route path="/test" component={Views.Test} />
         </Switch>
       </Router>

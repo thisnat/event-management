@@ -24,8 +24,8 @@ const Account = () => {
     }, [])
 
     return (
-        <div className="container my-5">
-            <h1>your account</h1>
+        <div className="container my-4">
+            <h1 className="lang-th">ข้อมูลบัญชี</h1>
             <div className="mt-5">
                 <div className="row">
                     <div className="col-sm-4 mb-4" style={{ textAlign: "center" }} >
@@ -37,7 +37,7 @@ const Account = () => {
                         }
                         <p className="gradient-text mt-2" style={{ fontSize: 24 }}>@{user.username}</p>
                     </div>
-                    <div className="col-sm-8 lang-th">
+                    <div className="col-sm-8 lang-th" style={{fontSize:22}}>
                         {
                             user.isOrg
                                 ? <span className="badge rounded-pill bg-primary">บัญชีองค์กร</span>
