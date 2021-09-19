@@ -1,14 +1,4 @@
-import styled from "styled-components";
-
-const DetailBtn = styled.button`
-color : white;
-background-color : black;
-font-size : 1.1rem;
-padding : 0.7rem 2rem;
-border-radius : 1rem;
-border : none;
-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-`
+import { BlackBtn } from "../../style/Button";
 
 const EventShowcase = () => {
     return (
@@ -21,7 +11,7 @@ const EventShowcase = () => {
                     <div className="event-showcase-detail">
                         <p className="mb-0">เข้าร่วมแล้ว 15 คน</p>
                         <p>จองพื้นที่แล้ว 7 คน</p>
-                        <DetailBtn>รายละเอียด</DetailBtn>
+                        <BlackBtn>รายละเอียด</BlackBtn>
                     </div>
                 </div>
                 <div className="col-sm-4 mt-5 event-showcase-host">

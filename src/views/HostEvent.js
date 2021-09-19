@@ -38,7 +38,7 @@ const HostEvent = () => {
                             } else {
                                 setData(Object.assign({}, data, { name: e.target.value }));
                             }
-                        }} />
+                        }} placeholder="ไม่เกิน x ตัวอักษร"/>
                     </div>
                     <div className="row mb-3">
                         <div className="col-md mb-3">
@@ -55,7 +55,7 @@ const HostEvent = () => {
                             }}>เลือก Emoji</button>
                             {
                                 emojiOpen
-                                    ? <div className="mt-2" style={{position:"absolute"}}>
+                                    ? <div className="mt-2" style={{ position: "absolute" }}>
                                         <Picker emoji="tada" title="Pick your emoji !" native={true} onSelect={(emoji) => {
                                             setData(Object.assign({}, data, { emoji: emoji.native }));
                                             setEmojiOpen(!emojiOpen);
@@ -65,9 +65,23 @@ const HostEvent = () => {
                             }
                         </div>
                     </div>
-                    <div className="mb-3">
+                    <div className="row mb-3">
+                        <div className="col-md mb-3">
+                            <label className="form-label">วันที่</label>
+                            <input type="text" className="form-control" required />
+                        </div>
+                        <div className="col-md mb-3">
+                            <label className="form-label">เวลา</label>
+                            <input type="text" className="form-control" required />
+                        </div>
+                        <div className="col-md">
+                            <label className="form-label">สถานที่</label>
+                            <input type="text" className="form-control" required />
+                        </div>
+                    </div>
+                    <div className="mb-4">
                         <label className="form-label">รายละเอียด</label>
-                        <input type="text" className="form-control" required/>
+                        <input type="text" className="form-control" required />
                     </div>
                     <button type="submit" className="btn btn-success">สร้างอีเว้นท์</button>
                 </form>

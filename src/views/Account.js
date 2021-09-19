@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
+import { getWithToken } from "../service/api";
 
-import { getWithToken, logOut } from "../service/api";
-
-const ProfilePic = styled.img`
-width : 200px;
-height : 200px;
-border-radius : 360px;
-`
+import Host from "../components/event/Host";
 
 const Account = () => {
 
@@ -17,9 +11,7 @@ const Account = () => {
         getWithToken("/user/me").then(res => {
             setUser(res.data);
         }).catch(err => {
-            alert(err);
-
-            logOut();
+            alert(err.response.data.msg);
         });
     }, [])
 
@@ -28,16 +20,10 @@ const Account = () => {
             <h1 className="lang-th">ข้อมูลบัญชี</h1>
             <div className="mt-5">
                 <div className="row">
-                    <div className="col-sm-4 mb-4" style={{ textAlign: "center" }} >
-                        <ProfilePic src={user.pic} />
-                        {
-                            user.isOrg
-                            ? <h2 className="mt-4 mb-0">{user.name}</h2>
-                            : <h2 className="mt-4 mb-0">{user.name} {user.lastName}</h2>
-                        }
-                        <p className="gradient-text mt-2" style={{ fontSize: 24 }}>@{user.username}</p>
+                    <div className="col-sm-4 mb-4">
+                        <Host user={user}/>
                     </div>
-                    <div className="col-sm-8 lang-th" style={{fontSize:22}}>
+                    <div className="col-sm-8 lang-th" style={{fontSize:20}}>
                         {
                             user.isOrg
                                 ? <span className="badge rounded-pill bg-primary">บัญชีองค์กร</span>

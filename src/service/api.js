@@ -7,7 +7,7 @@ function setHeader() {
     const user = localStorage.getItem('userData');
     const token = Cookies.get("token");
 
-    if (user || token ) {
+    if (user && token) {
         axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` }
     } else {
         //focus this
@@ -24,10 +24,9 @@ export const logOut = () => {
     window.location.replace("/");
 }
 
-export const getWithToken = async (apiPath) => {
+export const getWithToken = (apiPath) => {
     setHeader();
-    let response = await axios.get(`${API_BASE}${apiPath}`);
 
-    return response
+    return axios.get(`${API_BASE}${apiPath}`);
 }
 

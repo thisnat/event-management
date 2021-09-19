@@ -11,7 +11,7 @@ function App() {
   const user = localStorage.getItem('userData');
   const token = Cookies.get("token");
 
-  if (user || token) {
+  if (user && token) {
     return (
       <div className="App">
         <Navbar />
@@ -43,7 +43,6 @@ function App() {
           <Route exact path="/event/:id" component={Views.Event} />
 
           <Route component={Views.NotFound} />
-          <Route path="/test" component={Views.Test} />
         </Switch>
       </Router>
       <Footer />

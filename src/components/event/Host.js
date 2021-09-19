@@ -1,17 +1,15 @@
-import styled from "styled-components";
+import { ProfilePic } from "../../style/Image";
 
-const ProfilePic = styled.img`
-border-radius : 360px;
-width : 200px;
-height : 200px;
-`
-
-const Host = () => {
+const Host = ({ user }) => {
     return (
-        <div style={{textAlign:"center"}}>
-            <ProfilePic src="https://avatars.dicebear.com/api/micah/adminlnwza.svg?background=%23ede1be" alt="host" />
-            <h2 className="mt-3 lang-th">Jane Doe</h2>
-            <p className="gradient-text" style={{fontSize:26}}>@somethingbkk</p>
+        <div style={{ textAlign: "center" }}>
+            <ProfilePic src={user.pic} alt="host" />
+            {
+                user.isOrg
+                    ? <h2 className="mt-4 mb-0">{user.name}</h2>
+                    : <h2 className="mt-4 mb-0">{user.name} {user.lastName}</h2>
+            }
+            <p className="gradient-text" style={{ fontSize: 24 }}>@{user.username}</p>
             <p className="mt-4 lang-th">ทดสอบข้อความ about</p>
         </div>
     );
