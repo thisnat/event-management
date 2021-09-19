@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getWithToken } from "../service/api";
 
 import Host from "../components/event/Host";
+import { DateTime } from "luxon";
 
 const Account = () => {
 
@@ -23,7 +24,7 @@ const Account = () => {
                     <div className="col-sm-4 mb-4">
                         <Host user={user}/>
                     </div>
-                    <div className="col-sm-8 lang-th" style={{fontSize:20}}>
+                    <div className="col-sm-8 lang-th">
                         {
                             user.isOrg
                                 ? <span className="badge rounded-pill bg-primary">บัญชีองค์กร</span>
@@ -32,8 +33,8 @@ const Account = () => {
                         <div className="mt-4">
                             <p>id : {user._id}</p>
                             <p>email : {user.email}</p>
-                            <p>create at : {user.create_at}</p>
-                            <p>update at : {user.update_at}</p>
+                            <p className="mt-5">เข้าร่วมเมื่อ {DateTime.fromISO(user.create_at).toLocaleString(DateTime.DATE_FULL)}</p>
+                            <p>แก้ไขล่าสุด {DateTime.fromISO(user.update_at).toLocaleString(DateTime.DATETIME_SHORT)} ({DateTime.fromISO(user.update_at).toRelative()})</p>
                         </div>
                     </div>
                 </div>

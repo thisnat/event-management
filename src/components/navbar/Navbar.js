@@ -1,4 +1,5 @@
 import { logOut } from "../../service/api";
+import { NavbarProfilePic } from "../../style/Image";
 
 const Navbar = () => {
     const userData = JSON.parse(localStorage.getItem('userData'));
@@ -26,7 +27,7 @@ const Navbar = () => {
                         <li className="nav-item dropdown">
                             <a className="nav-link active dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span className="navbar-brand" href="/">
-                                    <img className="navbar-profile-pic " src={userData.pic} alt="profile" />
+                                    <NavbarProfilePic src={userData.pic} alt="profile" />
                                 </span>
                                 @{userData.username}
                             </a>
