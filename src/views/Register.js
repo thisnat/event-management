@@ -24,7 +24,7 @@ const Register = () => {
             axios.post(`${API_BASE}/user/register`, user).then(() => {
                 successAlertRedirect("ลงทะเบียนสำเร็จ");
             }).catch(err => {
-                alert(err);
+                alert(err.response.data.msg);
             });
         } else {
             alert("password ไม่ตรงกัน")

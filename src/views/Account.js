@@ -16,27 +16,64 @@ const Account = () => {
         });
     }, [])
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        console.log("hello");
+    }
+
     return (
         <div className="container my-4">
             <h1 className="lang-th">ข้อมูลบัญชี</h1>
             <div className="mt-5">
                 <div className="row">
-                    <div className="col-sm-4 mb-4">
-                        <Host user={user}/>
+                    <div className="col-sm-5 mb-4">
+                        <Host user={user} />
                     </div>
-                    <div className="col-sm-8 lang-th">
+                    <form className="col-sm-7 lang-th" onSubmit={handleSubmit}>
                         {
                             user.isOrg
                                 ? <span className="badge rounded-pill bg-primary">บัญชีองค์กร</span>
                                 : <span className="badge rounded-pill bg-secondary">บัญชีบุคคล</span>
                         }
-                        <div className="mt-4">
-                            <p>id : {user._id}</p>
-                            <p>email : {user.email}</p>
-                            <p className="mt-5">เข้าร่วมเมื่อ {DateTime.fromISO(user.create_at).toLocaleString(DateTime.DATE_FULL)}</p>
-                            <p>แก้ไขล่าสุด {DateTime.fromISO(user.update_at).toLocaleString(DateTime.DATETIME_SHORT)} ({DateTime.fromISO(user.update_at).toRelative()})</p>
+                        <div className="mt-3">
+                            <p>ID : {user._id}</p>
+
+                            <div className="mt-3">
+                                <label className="form-label">Email</label>
+                                <input type="email" className="form-control" value={user.email} disabled />
+                            </div>
+
+                            <div className="mt-3">
+                                <label className="form-label">ชื่อ</label>
+                                <input type="text" className="form-control" value={user.name} disabled />
+                            </div>
+
+                            {
+                                !user.isOrg
+                                    ? <div className="mt-3">
+                                        <label className="form-label">นามสกุล</label>
+                                        <input type="text" className="form-control" value={user.lastName} disabled />
+                                    </div>
+                                    : null
+                            }
+
+                            <div className="mt-3">
+                                <label className="form-label">เกี่ยวกับ</label>
+                                <input type="text" className="form-control" value="ทดสอบข้อความ about" disabled />
+                            </div>
+
+                            <div className="mt-5 text-muted">
+                                <p>เข้าร่วมเมื่อ {DateTime.fromISO(user.create_at).toLocaleString(DateTime.DATE_FULL)}</p>
+                                <p>แก้ไขล่าสุด {DateTime.fromISO(user.update_at).toLocaleString(DateTime.DATETIME_SHORT)} ({DateTime.fromISO(user.update_at).toRelative()})</p>
+                            </div>
+
+                            <div className="mt-4">
+                                <button className="btn btn-primary" type="submit">แก้ไขข้อมูล</button>
+                                <button className="btn btn-secondary ms-4">เปลี่ยนรูปประจำตัว</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

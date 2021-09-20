@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
         <nav className="navbar sticky-top navbar-expand-lg navbar-dark" style={{backgroundColor:"black"}}>
             <div className="container-fluid">
-                <a className="navbar-brand" href="/" style={{marginLeft:"10%"}}>🎉 event mangement</a>
+                <a className="navbar-brand font-stylish" href="/" style={{marginLeft:"10%"}}>🎉 event mangement</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

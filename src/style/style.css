@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 * {
     box-sizing: border-box;
@@ -29,7 +29,7 @@ footer {
 }
 
 .font-stylish {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Lobster', cursive;
 }
 
 .gradient-text {

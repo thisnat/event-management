@@ -68,11 +68,11 @@ const HostEvent = () => {
                     <div className="row mb-3">
                         <div className="col-md mb-3">
                             <label className="form-label">วันที่</label>
-                            <input type="text" className="form-control" required />
+                            <input type="date" className="form-control" required />
                         </div>
                         <div className="col-md mb-3">
                             <label className="form-label">เวลา</label>
-                            <input type="text" className="form-control" required />
+                            <input type="time" className="form-control" required />
                         </div>
                         <div className="col-md">
                             <label className="form-label">สถานที่</label>

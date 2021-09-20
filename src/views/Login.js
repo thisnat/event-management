@@ -30,7 +30,7 @@ const Login = () => {
 
             successAlertRedirect("เข้าสู่ระบบสำเร็จ");
         }).catch(err => {
-            alert(err.message);
+            alert(err.response.data.msg);
         });
     }
 

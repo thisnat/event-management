@@ -24,8 +24,8 @@ function App() {
             <Route path="/host" component={Views.HostEvent} />
             <Route path="/me" component={Views.Account} />
 
-            <Route component={Views.NotFound} />
             <Route path="/test" component={Views.Test} />
+            <Route component={Views.NotFound} />
           </Switch>
         </Router>
         <Footer />
