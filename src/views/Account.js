@@ -6,8 +6,6 @@ import { DateTime } from "luxon";
 
 const Account = () => {
 
-    const [user, setUser] = useState({});
-
     useEffect(() => {
         getWithToken("/user/me").then(res => {
             setUser(res.data);
@@ -16,10 +14,25 @@ const Account = () => {
         });
     }, [])
 
+    const [user, setUser] = useState({
+        email : "",
+        name : "",
+        lastName : "",
+        about : ""
+    });
+    const [edit, setEdit] = useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log("hello");
+        console.log(user);
+        setEdit(!edit);
+    }
+
+    const handleEdit = (e) => {
+        e.preventDefault();
+
+        setEdit(!edit);
     }
 
     return (
@@ -41,26 +54,38 @@ const Account = () => {
 
                             <div className="mt-3">
                                 <label className="form-label">Email</label>
-                                <input type="email" className="form-control" value={user.email} disabled />
+                                <input type="email" className="form-control" value={user.email} disabled={edit ? "" : "disabled"} required
+                                onChange={(e) => {
+                                    setUser(Object.assign({}, user, {email : e.target.value}))
+                                }}/>
                             </div>
 
                             <div className="mt-3">
                                 <label className="form-label">ชื่อ</label>
-                                <input type="text" className="form-control" value={user.name} disabled />
+                                <input type="text" className="form-control" value={user.name} disabled={edit ? "" : "disabled"} required
+                                onChange={(e) => {
+                                    setUser(Object.assign({}, user, {name : e.target.value}))
+                                }}/>
                             </div>
 
                             {
                                 !user.isOrg
                                     ? <div className="mt-3">
                                         <label className="form-label">นามสกุล</label>
-                                        <input type="text" className="form-control" value={user.lastName} disabled />
+                                        <input type="text" className="form-control" value={user.lastName} disabled={edit ? "" : "disabled"} required
+                                        onChange={(e) => {
+                                    setUser(Object.assign({}, user, {lastName : e.target.value}))
+                                }}/>
                                     </div>
                                     : null
                             }
 
                             <div className="mt-3">
                                 <label className="form-label">เกี่ยวกับ</label>
-                                <input type="text" className="form-control" value="ทดสอบข้อความ about" disabled />
+                                <input type="text" className="form-control" value={user.about} disabled={edit ? "" : "disabled"}
+                                onChange={(e) => {
+                                    setUser(Object.assign({}, user, {about : e.target.value}))
+                                }}/>
                             </div>
 
                             <div className="mt-5 text-muted">
@@ -69,7 +94,16 @@ const Account = () => {
                             </div>
 
                             <div className="mt-4">
-                                <button className="btn btn-primary" type="submit">แก้ไขข้อมูล</button>
+                                {
+                                    !edit
+                                    ? <button className="btn btn-primary" onClick={handleEdit}>แก้ไขข้อมูล</button>
+                                    : null
+                                }
+                                {
+                                    edit
+                                    ? <button className="btn btn-success" type="submit">บันทึก</button>
+                                    : null
+                                }
                                 <button className="btn btn-secondary ms-4">เปลี่ยนรูปประจำตัว</button>
                             </div>
                         </div>

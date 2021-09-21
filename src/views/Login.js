@@ -22,7 +22,8 @@ const Login = () => {
                 name : res.data.name,
                 lastname : res.data.lastName,
                 username : res.data.username,
-                pic : res.data.pic
+                pic : res.data.pic,
+                about : res.data.about
             }
 
             localStorage.setItem('userData', JSON.stringify(clientData));

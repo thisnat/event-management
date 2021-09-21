@@ -13,7 +13,8 @@ const Event = (props) => {
         name : "Jane",
         lastName : "Doe",
         username : "jane",
-        pic : "https://source.boringavatars.com/marble/120/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51"
+        pic : "https://source.boringavatars.com/marble/120/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51",
+        about : "test"
     }
 
     return (
