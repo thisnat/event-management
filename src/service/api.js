@@ -30,3 +30,9 @@ export const getWithToken = (apiPath) => {
     return axios.get(`${API_BASE}${apiPath}`);
 }
 
+export const patchWithToken = (apiPath, data) => {
+    setHeader();
+
+    return axios.patch(`${API_BASE}${apiPath}`, data);
+}
+

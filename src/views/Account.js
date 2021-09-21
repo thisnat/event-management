@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getWithToken } from "../service/api";
+import { getWithToken, patchWithToken } from "../service/api";
 
 import Host from "../components/event/Host";
 import { DateTime } from "luxon";
@@ -25,7 +25,12 @@ const Account = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(user);
+        patchWithToken("/user/me", user).then(res =>{
+            setUser(Object.assign({}, user, {update_at : DateTime.now()}));
+        }).catch(err => {
+            alert(err.response.data.msg);
+        });
+
         setEdit(!edit);
     }
 
