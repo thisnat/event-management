@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import { toast } from 'react-toastify';
 
 export const successAlertRedirect = (msg) => {
     Swal.fire({
@@ -10,4 +11,8 @@ export const successAlertRedirect = (msg) => {
             window.location.replace("/");
         }
     });
+}
+
+export const successToast = msg => {
+    toast.success(msg);
 }

@@ -6,6 +6,7 @@ import GuestNavbar from './components/navbar/GuestNavbar';
 import Footer from './components/Footer';
 
 import Cookies from 'js-cookie';
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   const user = localStorage.getItem('userData');
@@ -28,6 +29,7 @@ function App() {
             <Route component={Views.NotFound} />
           </Switch>
         </Router>
+        <ToastContainer />
         <Footer />
       </div>
     );
