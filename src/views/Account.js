@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getWithToken, patchWithToken } from "../service/api";
 import Host from "../components/event/Host";
 import { DateTime } from "luxon";
-import { successToast } from "../service/alert";
+import { successToast, changePasswordAlert } from "../service/alert";
 
 const Account = () => {
 
@@ -110,7 +110,13 @@ const Account = () => {
                                         ? <button className="btn btn-success" type="submit">บันทึก</button>
                                         : null
                                 }
-                                <button className="btn btn-secondary ms-4">เปลี่ยนรูปประจำตัว</button>
+                                <button className="btn btn-secondary ms-4" onClick={(e) => {
+                                    e.preventDefault();
+                                    changePasswordAlert();
+                                }}>เปลี่ยน Password</button>
+                                <button className="btn btn-secondary ms-4" onClick={(e) => {
+                                    e.preventDefault();
+                                }}>เปลี่ยนรูปประจำตัว</button>
                             </div>
                         </div>
                     </form>
