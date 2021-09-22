@@ -1,11 +1,13 @@
-const MoreDetail = () => {
+import { DateTime } from "luxon";
+
+const MoreDetail = ({data}) => {
     return (
         <div className="p-2 lang-th">
             <h4>กำหนดการ</h4>
             <div className="text-muted mt-2">
-                <p className="mb-0">📅 วันที่ : 9 June 2021</p>
-                <p className="mb-0">🕒 เวลา : 16.00 - 18.00</p>
-                <p>📍 สถานที่ : somewhere</p>
+                <p className="mb-0">📅 วันที่ : {DateTime.fromISO(data.date).toLocaleString()}</p>
+                <p className="mb-0">🕒 เวลา : {data.time}</p>
+                <p>📍 สถานที่ : {data.location}</p>
             </div>
             <div className="mt-4">
                 <h4>เพิ่มเติม</h4>

@@ -7,6 +7,8 @@ import { colorList } from '../constant/color';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 
+import { postWithToken } from "../service/api"
+
 const HostEvent = () => {
 
     const userData = JSON.parse(localStorage.getItem('userData'));
@@ -16,11 +18,24 @@ const HostEvent = () => {
         name: "????",
         host: userData.username,
         color: "#307fe2",
-        regis: "??",
-        reserve: "??/??"
+        date: "",
+        time: "",
+        location: "",
+        about: ""
     });
 
     const [emojiOpen, setEmojiOpen] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        postWithToken("/event/create", Object.assign({}, data, {host : ""})).then(res => {
+            //redirect to event page
+            window.location.replace(`/event/${res.data._id}`);
+        }).catch(err => {
+            alert(err.response.data.msg)
+        });
+    }
 
     return (
         <div className="container my-4">
@@ -29,7 +44,7 @@ const HostEvent = () => {
                 <EventCard data={data} />
             </div>
             <div className="m-auto mt-5 lang-th" style={{ maxWidth: 800 }}>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label className="form-label">ชื่ออีเว้นท์</label>
                         <input type="text" className="form-control" required onChange={(e) => {
@@ -38,7 +53,7 @@ const HostEvent = () => {
                             } else {
                                 setData(Object.assign({}, data, { name: e.target.value }));
                             }
-                        }} placeholder="ไม่เกิน x ตัวอักษร"/>
+                        }} placeholder="ไม่เกิน x ตัวอักษร" />
                     </div>
                     <div className="row mb-3">
                         <div className="col-md mb-3">
@@ -68,20 +83,28 @@ const HostEvent = () => {
                     <div className="row mb-3">
                         <div className="col-md mb-3">
                             <label className="form-label">วันที่</label>
-                            <input type="date" className="form-control" required />
+                            <input type="date" className="form-control" required onChange={(e) => {
+                                setData(Object.assign({}, data, { date: e.target.value }))
+                            }} />
                         </div>
                         <div className="col-md mb-3">
                             <label className="form-label">เวลา</label>
-                            <input type="time" className="form-control" required />
+                            <input type="time" className="form-control" required onChange={(e) => {
+                                setData(Object.assign({}, data, { time: e.target.value }))
+                            }} />
                         </div>
                         <div className="col-md">
                             <label className="form-label">สถานที่</label>
-                            <input type="text" className="form-control" required />
+                            <input type="text" className="form-control" required onChange={(e) => {
+                                setData(Object.assign({}, data, { location: e.target.value }))
+                            }} />
                         </div>
                     </div>
                     <div className="mb-4">
                         <label className="form-label">รายละเอียด</label>
-                        <input type="text" className="form-control" required />
+                        <input type="text" className="form-control" required onChange={(e) => {
+                            setData(Object.assign({}, data, { about: e.target.value }))
+                        }} />
                     </div>
                     <button type="submit" className="btn btn-success">สร้างอีเว้นท์</button>
                 </form>

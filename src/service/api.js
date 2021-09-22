@@ -30,6 +30,12 @@ export const getWithToken = (apiPath) => {
     return axios.get(`${API_BASE}${apiPath}`);
 }
 
+export const postWithToken = (apiPath, data) => {
+    setHeader();
+
+    return axios.post(`${API_BASE}${apiPath}`, data);
+}
+
 export const patchWithToken = (apiPath, data) => {
     setHeader();
 
