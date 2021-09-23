@@ -18,10 +18,15 @@ function setHeader() {
     }
 }
 
-export const logOut = () => {
-    Cookies.remove("token");
-    localStorage.removeItem('userData');
-    window.location.replace("/");
+export const haveToken = () => {
+    const user = localStorage.getItem('userData');
+    const token = Cookies.get("token");
+
+    if (user && token) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 export const getWithToken = (apiPath) => {

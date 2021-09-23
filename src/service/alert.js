@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import { toast } from 'react-toastify';
 
 import { patchWithToken } from "./api"
+import Cookies from "js-cookie";
 
 export const successAlertRedirect = (msg) => {
     Swal.fire({
@@ -10,6 +11,20 @@ export const successAlertRedirect = (msg) => {
         allowOutsideClick: false
     }).then((result) => {
         if (result.isConfirmed) {
+            window.location.replace("/");
+        }
+    });
+}
+
+export const logOut = () => {
+    Swal.fire({
+        icon: 'success',
+        title: "ออกจากระบบแล้ว",
+        allowOutsideClick: false
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Cookies.remove("token");
+            localStorage.removeItem('userData');
             window.location.replace("/");
         }
     });

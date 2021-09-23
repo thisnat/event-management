@@ -1,4 +1,4 @@
-import { logOut } from "../../service/api";
+import { logOut } from "../../service/alert";
 import { NavbarProfilePic } from "../../style/Image";
 
 const Navbar = () => {

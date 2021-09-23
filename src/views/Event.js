@@ -4,19 +4,35 @@ import EventCard from '../components/card/EventCard';
 import Detail from '../components/event/Detail';
 import MoreDetail from '../components/event/MoreDetail';
 import axios from 'axios';
-import { API_BASE } from '../constant/api'
+import { API_BASE } from '../constant/api';
+import { getWithToken, haveToken } from '../service/api';
 
-import NotFound from "./NotFound"
+import Loading from "../components/Loading";
+import NotFound from "./NotFound";
 
 const Event = (props) => {
     const eventId = props.match.params.id;
 
     const [eventData, setEventData] = useState({});
+    const [user, setUser] = useState({});
+
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         axios.get(`${API_BASE}/event/id/${eventId}`).then(res => {
-            setEventData(res.data)
+            setEventData(res.data);
+            setIsLoading(false);
+        }).catch(() => {
+            setIsLoading(false);
         })
+
+        if (haveToken()) {
+            getWithToken('/user/token').then(res => {
+                setUser(res.data);
+            });
+        }
+
     }, [eventId])
 
     if (Object.keys(eventData).length !== 0) {
@@ -34,8 +50,16 @@ const Event = (props) => {
                         <div style={{ maxWidth: 600, margin: "auto" }}>
                             <EventCard data={eventData} />
                             <div className="lang-th" style={{ textAlign: "center" }}>
-                                <button className="btn btn-success mt-4 me-3">เข้าร่วม</button>
-                                <button className="btn btn-primary mt-4 me-3">จองพื้นที่</button>
+                                {
+                                    haveToken()
+                                        ? user.username === eventData.hostData.username
+                                            ? <button className="btn btn-primary mt-4">จัดการงานอีเว้นท์</button>
+                                            : <div>
+                                                <button className="btn btn-success mt-4 me-3">เข้าร่วม</button>
+                                                <button className="btn btn-primary mt-4 me-3">จองพื้นที่</button>
+                                            </div>
+                                        : null
+                                }
                             </div>
                         </div>
                         <div className="row mt-5">
@@ -51,6 +75,8 @@ const Event = (props) => {
                 </div>
             </div>
         );
+    } else if (isLoading) {
+        return <Loading />
     }
 
     return <NotFound />
