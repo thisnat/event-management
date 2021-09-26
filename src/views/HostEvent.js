@@ -21,7 +21,8 @@ const HostEvent = () => {
         date: "",
         time: "",
         location: "",
-        about: ""
+        about: "",
+        join:"????"
     });
 
     const [emojiOpen, setEmojiOpen] = useState(false);

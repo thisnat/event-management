@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_BASE } from '../constant/api';
+import { getWithToken, postWithToken, haveToken } from '../service/api';
+import { successToast } from '../service/alert'
+
 import Host from '../components/event/Host';
 import EventCard from '../components/card/EventCard';
 import Detail from '../components/event/Detail';
 import MoreDetail from '../components/event/MoreDetail';
-import axios from 'axios';
-import { API_BASE } from '../constant/api';
-import { getWithToken, haveToken } from '../service/api';
-
 import Loading from "../components/Loading";
 import NotFound from "./NotFound";
 
@@ -17,6 +18,16 @@ const Event = (props) => {
     const [user, setUser] = useState({});
 
     const [isLoading, setIsLoading] = useState(false);
+    const [isJoin, setIsJoin] = useState(false);
+
+    const handleJoinBtn = (e) => {
+        e.preventDefault()
+
+        postWithToken(`/join/${eventId}`, {eventName : eventData.name}).then(res => {
+            setIsJoin(true);
+            successToast("เข้าร่วมอีเว้นท์สำเร็จ");
+        });
+    }
 
     useEffect(() => {
         setIsLoading(true);
@@ -31,6 +42,12 @@ const Event = (props) => {
             getWithToken('/user/token').then(res => {
                 setUser(res.data);
             });
+
+            getWithToken(`/join/isJoin/${eventId}`).then(res => {
+                if (res.data) {
+                    setIsJoin(true);
+                }
+            })
         }
 
     }, [eventId])
@@ -47,7 +64,7 @@ const Event = (props) => {
                         }
                     </div>
                     <div className="col-sm-9">
-                        <div style={{ maxWidth: 600, margin: "auto" }}>
+                        <div style={{ maxWidth: 550, margin: "auto" }}>
                             <EventCard data={eventData} />
                             <div className="lang-th" style={{ textAlign: "center" }}>
                                 {
@@ -55,7 +72,7 @@ const Event = (props) => {
                                         ? user.username === eventData.hostData.username
                                             ? <button className="btn btn-primary mt-4">จัดการงานอีเว้นท์</button>
                                             : <div>
-                                                <button className="btn btn-success mt-4 me-3">เข้าร่วม</button>
+                                                <button className="btn btn-success mt-4 me-3" onClick={handleJoinBtn} disabled={isJoin ? "disabled" : ""}>{isJoin ? "เข้าร่วมแล้ว" : "เข้าร่วม"}</button>
                                                 <button className="btn btn-primary mt-4 me-3">จองพื้นที่</button>
                                             </div>
                                         : null
