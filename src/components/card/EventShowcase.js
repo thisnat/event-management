@@ -2,7 +2,7 @@ import { BlackBtn } from "../../style/Button";
 
 const EventShowcase = () => {
     return (
-        <div className="container-sm mt-2" style={{maxWidth:1100}}>
+        <div className="container" style={{maxWidth:1100}}>
             <h2 className="lang-th">✨ งานอีเว้นท์ที่น่าสนใจ</h2>
             <div className="row event-showcase mt-4">
                 <div className="col-sm-8 lang-th">

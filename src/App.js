@@ -19,11 +19,12 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Views.Home} />
-            <Route path="/login" component={Views.Login} />
-            <Route path="/register" component={Views.Register} />
+            <Route exact path="/login" component={Views.Login} />
+            <Route exact path="/register" component={Views.Register} />
             <Route exact path="/event/:id" component={Views.Event} />
-            <Route path="/host" component={Views.HostEvent} />
-            <Route path="/me" component={Views.Account} />
+            <Route exact path="/host" component={Views.HostEvent} />
+            <Route exact path="/me" component={Views.Account} />
+            <Route exact path="/myevent" component={Views.MyEvent} />
 
             <Route path="/test" component={Views.Test} />
             <Route component={Views.NotFound} />
@@ -40,8 +41,8 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Views.Home} />
-          <Route path="/login" component={Views.Login} />
-          <Route path="/register" component={Views.Register} />
+          <Route exact path="/login" component={Views.Login} />
+          <Route exact path="/register" component={Views.Register} />
           <Route exact path="/event/:id" component={Views.Event} />
 
           <Route component={Views.NotFound} />

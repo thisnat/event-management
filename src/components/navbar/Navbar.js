@@ -20,7 +20,10 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link" href="/">My event</a>
+                            <a className="nav-link lang-th" href="/myevent">My event</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link lang-th" href="/">เกี่ยวกับ</a>
                         </li>
                     </ul>
                     <ul className="navbar-nav" style ={{marginRight:"10%"}}>
@@ -32,7 +35,7 @@ const Navbar = () => {
                                 @{userData.username}
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a className="dropdown-item lang-th" href="/host">🎉 สร้างงานอีเว้นท์</a></li>
+                                <li><a className="dropdown-item lang-th" href="/host">สร้างงานอีเว้นท์</a></li>
                                 <li><a className="dropdown-item lang-th" href="/me">ข้อมูลบัญชี</a></li>
                                 <li><a className="dropdown-item lang-th" href="/" style={{ color: "red" }} onClick={handleLogoutBtn}>ออกจากระบบ</a></li>
                             </ul>

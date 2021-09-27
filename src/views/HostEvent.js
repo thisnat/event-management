@@ -22,7 +22,7 @@ const HostEvent = () => {
         time: "",
         location: "",
         about: "",
-        join:"????"
+        join: 0
     });
 
     const [emojiOpen, setEmojiOpen] = useState(false);
@@ -30,7 +30,7 @@ const HostEvent = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        postWithToken("/event/create", Object.assign({}, data, {host : ""})).then(res => {
+        postWithToken("/event/create", Object.assign({}, data, { host: "" })).then(res => {
             //redirect to event page
             window.location.replace(`/event/${res.data._id}`);
         }).catch(err => {
@@ -40,7 +40,7 @@ const HostEvent = () => {
 
     return (
         <div className="container my-4">
-            <h2 className="lang-th">สร้างงานอีเว้นท์</h2>
+            <h1 className="lang-th">สร้างงานอีเว้นท์</h1>
             <div className="m-auto" style={{ maxWidth: 500 }}>
                 <EventCard data={data} />
             </div>
@@ -107,6 +107,7 @@ const HostEvent = () => {
                             setData(Object.assign({}, data, { about: e.target.value }))
                         }} />
                     </div>
+                    <p className="text-muted lang-th">* การตั้งค่าการจองพื้นที่จะทำได้หลังสร้างอีเว้นท์เสร็จ</p>
                     <button type="submit" className="btn btn-success">สร้างอีเว้นท์</button>
                 </form>
             </div>
