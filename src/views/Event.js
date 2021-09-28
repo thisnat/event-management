@@ -23,7 +23,12 @@ const Event = (props) => {
     const handleJoinBtn = (e) => {
         e.preventDefault()
 
-        postWithToken(`/join/${eventId}`, {eventName : eventData.name, email : user.email}).then(res => {
+        let payload = {
+            eventName : eventData.name, 
+        }
+
+        postWithToken(`/join/${eventId}`, payload).then(res => {
+            console.log(payload);
             setIsJoin(true);
             successToast("เข้าร่วมอีเว้นท์สำเร็จ");
         });
@@ -70,7 +75,7 @@ const Event = (props) => {
                                 {
                                     haveToken()
                                         ? user.username === eventData.hostData.username
-                                            ? <button className="btn btn-primary mt-4">จัดการอีเว้นท์</button>
+                                            ? <a className="btn btn-primary mt-4" href={`./${eventId}/setting`}>จัดการอีเว้นท์</a>
                                             : <div>
                                                 <button className="btn btn-success mt-4 me-3" onClick={handleJoinBtn} disabled={isJoin ? "disabled" : ""}>{isJoin ? "เข้าร่วมแล้ว" : "เข้าร่วม"}</button>
                                                 <button className="btn btn-primary mt-4 me-3">จองพื้นที่</button>

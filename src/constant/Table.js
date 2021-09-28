@@ -21,3 +21,22 @@ export const hostColumns = [
         selector: row => DateTime.fromISO(row.create_at).toLocaleString(DateTime.DATETIME_SHORT),
     },
 ];
+
+export const joinList = [
+    {
+        name: 'ชื่อ',
+        selector: row => `${row.name} ${row.lastName}`,
+    },
+    {
+        name: 'username',
+        selector: row => row.username,
+    },
+    {
+        name: 'email',
+        selector: row => row.email,
+    },
+    {
+        name: 'เข้าร่วมเมื่อ',
+        selector: row => DateTime.fromISO(row.joinDate).toLocaleString(DateTime.DATETIME_SHORT),
+    },
+];
