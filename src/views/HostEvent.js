@@ -22,7 +22,8 @@ const HostEvent = () => {
         time: "",
         location: "",
         about: "",
-        join: 0
+        join: 0,
+        canReserve : false
     });
 
     const [emojiOpen, setEmojiOpen] = useState(false);

@@ -3,7 +3,9 @@ import create from 'zustand'
 const useStore = create(set => ({
   bears: 2,
   eventId : "",
-  setEventId : (id) => set(state => ({eventId : id}))
+  setEventId : (id) => set(state => ({eventId : id})),
+  eventData : {},
+  setEventData : (data) => set(state => ({eventData : data})),
 }))
 
 export default useStore;

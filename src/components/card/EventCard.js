@@ -7,7 +7,11 @@ const EventCard = ({ data }) => {
                 <h4 className="lang-th">{data.name}</h4>
                 <div className="event-card-detail lang-th">
                     <p className="mb-0">ลงทะบียนแล้ว {data.join} คน</p>
-                    <p>จองพื้นที่แล้ว ??/?? พื้นที่</p>
+                    {
+                        data.canReserve
+                        ? <p>จองพื้นที่แล้ว {data.reserve}/{data.maxReserve} พื้นที่</p>
+                        : <p>ยังไม่เปิดการจองพื้นที่</p>
+                    }
                 </div>
             </div>
         </a>

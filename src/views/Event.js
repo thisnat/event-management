@@ -78,7 +78,7 @@ const Event = (props) => {
                                             ? <a className="btn btn-primary mt-4" href={`./${eventId}/setting`}>จัดการอีเว้นท์</a>
                                             : <div>
                                                 <button className="btn btn-success mt-4 me-3" onClick={handleJoinBtn} disabled={isJoin ? "disabled" : ""}>{isJoin ? "เข้าร่วมแล้ว" : "เข้าร่วม"}</button>
-                                                <button className="btn btn-primary mt-4 me-3">จองพื้นที่</button>
+                                                <a className="btn btn-primary mt-4 me-3" href={`/reserve/${eventId}`}>จองพื้นที่</a>
                                             </div>
                                         : null
                                 }

@@ -23,7 +23,7 @@ const Navbar = () => {
                             <a className="nav-link lang-th" href="/myevent">My event</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link lang-th" href="/">เกี่ยวกับ</a>
+                            <a className="nav-link lang-th" href="/">การจอง</a>
                         </li>
                     </ul>
                     <ul className="navbar-nav" style ={{marginRight:"10%"}}>

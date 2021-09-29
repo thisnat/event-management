@@ -14,11 +14,35 @@ const EventSetting = (props) => {
     const eventId = props.match.params.id;
     const setEventId = useStore(state => state.setEventId);
 
+    const setGlobalEvent = useStore(state => state.setEventData);
+
     const [user, setUser] = useState({});
     const [eventData, setEventData] = useState({});
+
     const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
     const [joinActive, setJoinActive] = useState(true);
     const [reserveActive, setReserveActive] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        setEventId(eventId)
+
+        axios.get(`${API_BASE}/event/id/${eventId}`).then(res => {
+            setEventData(res.data);
+            setGlobalEvent(res.data);
+            setIsLoading(false);
+        }).catch(() => {
+            setIsError(true);
+            setIsLoading(false);
+        });
+
+        if (haveToken()) {
+            getWithToken('/user/token').then(res => {
+                setUser(res.data);
+            });
+        }
+    }, [eventId, setEventId, setGlobalEvent])
 
     const handleJoinClick = (e) => {
         e.preventDefault()
@@ -33,26 +57,10 @@ const EventSetting = (props) => {
         setReserveActive(true)
     }
 
-    useEffect(() => {
-        setIsLoading(true);
-        setEventId(eventId)
-
-        axios.get(`${API_BASE}/event/id/${eventId}`).then(res => {
-            setEventData(res.data);
-            setIsLoading(false);
-        });
-
-        if (haveToken()) {
-            getWithToken('/user/token').then(res => {
-                setUser(res.data);
-            });
-        }
-    }, [eventId, setEventId])
-
     if (user && eventData.hostData && user.username === eventData.hostData.username) {
         return (
             <div className="container my-4 lang-th">
-                <h1>จัดการอีเว้นท์</h1>
+                <h1>จัดการอีเว้นท์ / {eventData.name}</h1>
                 <div>
                     <nav className="mt-2">
                         <ul className="pagination pagination">
@@ -77,6 +85,8 @@ const EventSetting = (props) => {
         );
     } else if (isLoading) {
         return <Loading />
+    } else if (isError) {
+        return <NotFound />
     }
 
     return <NotFound />

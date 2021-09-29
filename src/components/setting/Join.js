@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import useStore from "../../store";
-
 import axios from "axios";
 import { API_BASE } from "../../constant/api";
-
 import DataTable from 'react-data-table-component';
 import { joinList } from "../../constant/Table";
+
+import { downloadCSV } from "../../service/csv";
 
 const Join = () => {
     const eventId = useStore(state => state.eventId);
@@ -15,10 +15,11 @@ const Join = () => {
         axios.get(`${API_BASE}/join/event/${eventId}`).then(res => {
             setJoinData(res.data);
         })
-    },[eventId])
+    }, [eventId])
 
     return (
-        <div className="mt-4">
+        <div>
+            <button className="btn btn-success float-end" onClick={() => downloadCSV(joinData, eventId)}>ดาวน์โหลดไฟล์ .csv</button>
             <DataTable
                     title="รายชื่อผู้เข้าร่วมอีเว้นท์"
                     columns={joinList}

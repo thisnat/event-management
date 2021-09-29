@@ -17,8 +17,20 @@ export const hostColumns = [
         selector: row => <a href={`/event/${row._id}`}>{row.name}</a>,
     },
     {
+        name: 'จำนวนผู้เข้าร่วม',
+        selector: row => row.join,
+    },
+    {
+        name: 'จำนวนผู้จองพื้นที่',
+        selector: row => row.reserve,
+    },
+    {
         name: 'สร้างเมื่อ',
         selector: row => DateTime.fromISO(row.create_at).toLocaleString(DateTime.DATETIME_SHORT),
+    },
+    {
+        name: 'จัดการ',
+        selector: row => <a className="btn btn-primary" href={`/event/${row._id}/setting`}>จัดการ</a>,
     },
 ];
 

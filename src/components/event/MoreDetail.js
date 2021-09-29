@@ -13,7 +13,7 @@ const MoreDetail = ({ data }) => {
                 <h4>เพิ่มเติม</h4>
                 <div className="text-muted">
                     <p className="mb-0">สร้างเมื่อ {DateTime.fromISO(data.create_at).toLocaleString(DateTime.DATE_FULL)}</p>
-                    <p>แก้ไขล่าสุด {DateTime.fromISO(data.update_at).toRelative()}</p>
+                    {/*<p>แก้ไขล่าสุด {DateTime.fromISO(data.update_at).toRelative()}</p>*/}
                 </div>
             </div>
         </div>
