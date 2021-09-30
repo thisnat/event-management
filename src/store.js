@@ -6,6 +6,8 @@ const useStore = create(set => ({
   setEventId : (id) => set(state => ({eventId : id})),
   eventData : {},
   setEventData : (data) => set(state => ({eventData : data})),
+  user : {},
+  setUser : (data) => set(state => ({user : data})),
 }))
 
 export default useStore;

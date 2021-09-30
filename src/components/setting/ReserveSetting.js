@@ -1,30 +1,66 @@
+import { useState } from 'react';
+
+import useStore from '../../store'
+import { postWithToken } from '../../service/api'
+
 const ReserveSetting = () => {
+
+    const user = useStore(state => state.user);
+    const eventId = useStore(state => state.eventId);
+
+    const [input, setInput] = useState({
+        maxReserve: 1,
+        paymentInfo: "",
+        info: "",
+        pic: "test",
+        eventId: eventId,
+        price : 0
+    });
+
+    const handleSumbmitBtn = (e) => {
+        e.preventDefault()
+
+        postWithToken("/reserve/create", input).then(() => {
+        window.location.replace("./setting");
+        })
+        console.log("za");
+    }
+
     return (
         <div className="mt-5">
             <h2>กรุณาตั้งค่าเพื่อเปิดการใช้งานการจองพื้นที่</h2>
-            <form>
+            <form onSubmit={handleSumbmitBtn}>
                 <div className="row mt-4">
                     <div className="col-md">
                         <label className="form-label">ปริมาณพื้นที่ที่เปิดให้จอง</label>
-                        <input type="number" className="form-control" required />
-                        <p className="text-muted mt-2">** ปริมาณพื้นไม่สามารถแก้ไขได้ในภายหลัง</p>
+                        <input type="number" className="form-control" max={user.isOrg ? "32" : "16"} min="1" value={input.maxReserve} required
+                            onChange={(e) => setInput(Object.assign({}, input, { maxReserve: e.target.value }))} />
+                        <p className="text-muted mt-2">** ปริมาณพื้นไม่สามารถแก้ไขได้ในภายหลัง บัญชีบุคคลได้สูงสุด 16 ที่ บัญชีองค์กร 32 ที่</p>
                     </div>
                     <div className="col-md">
                         <label className="form-label">ข้อมูลการชำระเงิน (เช่น บัญชีธนาคาร)</label>
-                        <input type="text" className="form-control" required />
+                        <input type="text" className="form-control" required
+                            onChange={(e) => setInput(Object.assign({}, input, { paymentInfo: e.target.value }))} />
                     </div>
                 </div>
                 <div className="row mt-4">
                     <div className="col-md">
                         <label className="form-label">รายละเอียดเพิ่มเติม</label>
-                        <input type="text" className="form-control" required />
+                        <input type="text" className="form-control" required
+                            onChange={(e) => setInput(Object.assign({}, input, { info: e.target.value }))} />
+                    </div>
+                    <div className="col-md">
+                        <label className="form-label">ราคาต่อพื้นที่</label>
+                        <input type="number" className="form-control" required
+                            onChange={(e) => setInput(Object.assign({}, input, { price: e.target.value }))} />
+                        <p className="text-muted mt-2">** พื้นที่ราคาพิเศษจะสามาระตั้งค่าได้หลังจากนี้</p>
                     </div>
                     <div className="col-md">
                         <p>รูปแสดงพื้นที่ภายในงาน</p>
                         <button className="btn btn-primary">เลือก</button>
                     </div>
                 </div>
-                <button className="btn btn-success mt-5">ตกลง</button>
+                <button type="submit" className="btn btn-success mt-5">ตกลง</button>
             </form>
         </div>
     );

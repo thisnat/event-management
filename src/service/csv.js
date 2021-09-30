@@ -1,7 +1,7 @@
 function objClean(array) {
 	let data = []
 
-	array.forEach(async item => {
+	array.forEach(item => {
 		delete item["_id"];
 		delete item["__v"];
 		delete item["userId"];

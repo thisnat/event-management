@@ -9,9 +9,8 @@ const Reserve = () => {
     }
 
     return (
-        <div>
-            <h1>its reserve</h1>
-            <p>{eventData.name}</p>
+        <div className="mt-4">
+            <h4>หน้าการจอง</h4>
         </div>
     );
 };

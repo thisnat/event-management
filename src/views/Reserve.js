@@ -3,6 +3,7 @@ import axios from 'axios';
 import { API_BASE } from '../constant/api';
 import NotFound from '../views/NotFound';
 import ReserveNotActive from '../components/ReserveNotActive';
+import { ReserveZone } from '../style/Image';
 
 const Reserve = (props) => {
 
@@ -25,9 +26,12 @@ const Reserve = (props) => {
     }
 
     return (
-        <div className="container my-4">
-            <h1>event id : {eventId}</h1>
-            <p>{eventData.name}</p>
+        <div className="container my-4 lang-th">
+            <h1>จองพื้นที่ / {eventData.name}</h1>
+            <h5 className="text-muted">เหลือพื้นที่ {eventData.maxReserve - eventData.reserve} พื้นที่</h5>
+            <div className="text-center mt-4">
+                <ReserveZone src="https://demo.warptheme.com/images/placeholder_600x400.svg"/>
+            </div>
         </div>
     );
 };

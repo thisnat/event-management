@@ -13,16 +13,16 @@ import NotFound from '../views/NotFound';
 const EventSetting = (props) => {
     const eventId = props.match.params.id;
     const setEventId = useStore(state => state.setEventId);
-
     const setGlobalEvent = useStore(state => state.setEventData);
+    const setGlobalUser = useStore(state => state.setUser);
 
     const [user, setUser] = useState({});
     const [eventData, setEventData] = useState({});
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [joinActive, setJoinActive] = useState(true);
-    const [reserveActive, setReserveActive] = useState(false);
+    const [joinActive, setJoinActive] = useState(false);
+    const [reserveActive, setReserveActive] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -40,9 +40,10 @@ const EventSetting = (props) => {
         if (haveToken()) {
             getWithToken('/user/token').then(res => {
                 setUser(res.data);
+                setGlobalUser(res.data);
             });
         }
-    }, [eventId, setEventId, setGlobalEvent])
+    }, [eventId, setEventId, setGlobalEvent, setGlobalUser])
 
     const handleJoinClick = (e) => {
         e.preventDefault()
@@ -64,8 +65,8 @@ const EventSetting = (props) => {
                 <div>
                     <nav className="mt-2">
                         <ul className="pagination pagination">
-                            <li className={`page-item ${joinActive ? "active" : ""}`}><button className="page-link" onClick={handleJoinClick}>การเข้าร่วม</button></li>
                             <li className={`page-item ${reserveActive ? "active" : ""}`}><button className="page-link" onClick={handleReserveClick}>การจองพื้นที่</button></li>
+                            <li className={`page-item ${joinActive ? "active" : ""}`}><button className="page-link" onClick={handleJoinClick}>การเข้าร่วม</button></li>
                         </ul>
                     </nav>
                 </div>
