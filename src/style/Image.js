@@ -16,6 +16,6 @@ export const ReserveZone = styled.img`
 width: 100%;
 height: auto;
 max-width: 800px;
-max-height: 500px;
+max-height: 400px;
 border-radius: 1rem;
 `

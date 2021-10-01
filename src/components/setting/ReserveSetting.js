@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import useStore from '../../store'
 import { postWithToken } from '../../service/api'
+
+import ZoneSetting from './ZoneSetting';
+import axios from 'axios';
+import { API_BASE } from '../../constant/api';
 
 const ReserveSetting = () => {
 
     const user = useStore(state => state.user);
     const eventId = useStore(state => state.eventId);
+    const [reserve, setReserve] = useState({});
 
     const [input, setInput] = useState({
         maxReserve: 1,
@@ -14,16 +19,27 @@ const ReserveSetting = () => {
         info: "",
         pic: "test",
         eventId: eventId,
-        price : 0
+        price: 0
     });
+
+    useEffect(() => {
+        axios.get(`${API_BASE}/reserve/event/${eventId}`).then(res => {
+            setReserve(res.data)
+        })
+    }, [eventId])
 
     const handleSumbmitBtn = (e) => {
         e.preventDefault()
 
         postWithToken("/reserve/create", input).then(() => {
-        window.location.replace("./setting");
+            window.location.replace("./setting");
         })
-        console.log("za");
+    }
+
+    if (reserve) {
+        if (!reserve.isZoneSet) {
+            return <ZoneSetting />
+        }
     }
 
     return (
@@ -57,7 +73,7 @@ const ReserveSetting = () => {
                     </div>
                     <div className="col-md">
                         <p>รูปแสดงพื้นที่ภายในงาน</p>
-                        <button className="btn btn-primary">เลือก</button>
+                        <button className="btn btn-primary" onClick={(e) => e.preventDefault()}>เลือก</button>
                     </div>
                 </div>
                 <button type="submit" className="btn btn-success mt-5">ตกลง</button>
