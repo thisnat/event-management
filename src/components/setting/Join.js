@@ -20,7 +20,11 @@ const Join = () => {
 
     return (
         <div>
-            <button className="btn btn-success float-end" onClick={() => downloadCSV(joinData, eventId)}>ดาวน์โหลดไฟล์ .csv</button>
+            {
+                joinData.length > 0
+                ? <button className="btn btn-success float-end" onClick={() => downloadCSV(joinData, eventId)}>ดาวน์โหลดไฟล์ .csv</button>
+                : <button className="btn btn-success float-end" disabled>ดาวน์โหลดไฟล์ .csv</button>
+            }
             <DataTable
                 title="รายชื่อผู้เข้าร่วมอีเว้นท์"
                 columns={joinList}

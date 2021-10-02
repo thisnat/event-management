@@ -1,9 +1,35 @@
-const ReserveSelect = () => {
+import { useState, useEffect } from "react";
+
+import axios from "axios";
+import { API_BASE } from '../../constant/api'
+
+const ReserveSelect = ({id, setPrice, setZoneId}) => {
+
+    const [zoneList, setZoneList] = useState([]);
+
+    const handleSelect = (e) => {
+        let [zoneId, price] = e.target.value.split(",");
+        
+        setZoneId(zoneId);
+        setPrice(price);
+    }
+
+    useEffect(() => {
+        axios.get(`${API_BASE}/zone/zoneByEvent/${id}`).then(res => {
+            setZoneList(res.data);
+        })
+    }, [id])
+
     return (
-        <select className="form-select">
-            <option defaultValue>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
+        <select className="form-select" onChange={handleSelect}>
+            <option defaultValue />
+            {
+                zoneList.map((zone, index) => (
+                    !zone.isReserve
+                    ? <option key={index} value={`${zone._id},${zone.price}`} >{zone.name}</option>
+                    : null
+                ))
+            }
         </select>
     );
 };

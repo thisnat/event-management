@@ -11,8 +11,8 @@ const Reserve = () => {
 
     return (
         <div className="mt-4">
-            <h2>การจองพื้นที่ รออนุมัติ</h2>
-            <DataTable />
+            <DataTable 
+            title="การจองพื้นที่ รออนุมัติ"/>
         </div>
     );
 };

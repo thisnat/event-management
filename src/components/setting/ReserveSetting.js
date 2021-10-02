@@ -23,9 +23,24 @@ const ReserveSetting = () => {
     });
 
     useEffect(() => {
-        axios.get(`${API_BASE}/reserve/event/${eventId}`).then(res => {
-            setReserve(res.data)
-        })
+        //useEffect clenup 
+        const source = axios.CancelToken.source()
+        let isMounted = true;
+
+        axios.get(`${API_BASE}/reserve/event/${eventId}`, {
+            cancelToken: source.token,
+        }).then(res => {
+            if (isMounted) {
+                setReserve(res.data)
+            }
+        }).catch(err => {
+            if (!isMounted) return; // comp already unmounted, nothing to do
+        });
+
+        return () => {
+            isMounted = false;
+            source.cancel()
+        }
     }, [eventId])
 
     const handleSumbmitBtn = (e) => {
@@ -37,14 +52,12 @@ const ReserveSetting = () => {
     }
 
     if (reserve) {
-        if (!reserve.isZoneSet) {
-            return <ZoneSetting />
-        }
+        return <ZoneSetting />
     }
 
     return (
         <div className="mt-5">
-            <h2>กรุณาตั้งค่าเพื่อเปิดการใช้งานการจองพื้นที่</h2>
+            <h2>✨ กรุณาตั้งค่าเพื่อเปิดการใช้งานการจองพื้นที่</h2>
             <form onSubmit={handleSumbmitBtn}>
                 <div className="row mt-4">
                     <div className="col-md">
@@ -69,14 +82,14 @@ const ReserveSetting = () => {
                         <label className="form-label">ราคาต่อพื้นที่</label>
                         <input type="number" className="form-control" required
                             onChange={(e) => setInput(Object.assign({}, input, { price: e.target.value }))} />
-                        <p className="text-muted mt-2">** พื้นที่ราคาพิเศษจะสามาระตั้งค่าได้หลังจากนี้</p>
+                        <p className="text-muted mt-2">** พื้นที่ราคาพิเศษจะสามารถตั้งค่าได้หลังจากนี้</p>
                     </div>
                     <div className="col-md">
                         <p>รูปแสดงพื้นที่ภายในงาน</p>
                         <button className="btn btn-primary" onClick={(e) => e.preventDefault()}>เลือก</button>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-success mt-5">ตกลง</button>
+                <button type="submit" className="btn btn-success mt-5">ยืนยัน</button>
             </form>
         </div>
     );

@@ -1,5 +1,5 @@
 import useStore from '../../store'
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 import axios from 'axios';
 import { API_BASE } from '../../constant/api';
@@ -13,10 +13,24 @@ const ZoneSetting = () => {
     const [zoneList, setZoneList] = useState([]);
 
     useEffect(() => {
-        axios.get(`${API_BASE}/zone/zoneByEvent/${eventId}`).then(res => {
-            setZoneList(res.data)
-        })
-    },[eventId])
+        const source = axios.CancelToken.source()
+        let isMounted = true;
+
+        axios.get(`${API_BASE}/zone/zoneByEvent/${eventId}`, {
+            cancelToken: source.token,
+        }).then(res => {
+            if (isMounted) {
+                setZoneList(res.data)
+            }
+        }).catch(err => {
+            if (!isMounted) return;
+        });
+
+        return () => {
+            isMounted = false;
+            source.cancel()
+        }
+    }, [eventId])
 
     const handleSubmitBtn = () => {
         axios.patch(`${API_BASE}/event/reserveDone/${eventId}`).then(() => {
@@ -26,16 +40,16 @@ const ZoneSetting = () => {
 
     return (
         <div>
-            <h4>zone setting : {eventId}</h4>
-            <div className="row">
+            <h4 className="mt-4">ตั้งค่าชื่อ, ราคาแต่ละพื้นที่ eventId : {eventId}</h4>
+            <div className="row mt-4">
                 {
                     zoneList
-                    ? zoneList.map((zone, index) => (
-                        <div className="col-md-2" key={index}>
-                            <Zone zone={zone} />
-                        </div>
-                    ))
-                    : null
+                        ? zoneList.map((zone, index) => (
+                            <div className="col-md-2" key={index}>
+                                <Zone zone={zone} />
+                            </div>
+                        ))
+                        : null
                 }
             </div>
             <hr />
