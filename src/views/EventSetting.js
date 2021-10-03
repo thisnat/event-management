@@ -61,7 +61,7 @@ const EventSetting = (props) => {
     if (user && eventData.hostData && user.username === eventData.hostData.username) {
         return (
             <div className="container my-4 lang-th">
-                <h1>จัดการอีเว้นท์ / {eventData.name}</h1>
+                <h1>{eventData.name} / จัดการอีเว้นท์</h1>
                 <div>
                     <nav className="mt-2">
                         <ul className="pagination pagination">

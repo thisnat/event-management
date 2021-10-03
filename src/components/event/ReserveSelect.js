@@ -22,7 +22,7 @@ const ReserveSelect = ({id, setPrice, setZoneId}) => {
 
     return (
         <select className="form-select" onChange={handleSelect}>
-            <option defaultValue />
+            <option defaultValue value="">กรุณาเลือกพื้นที่</option>
             {
                 zoneList.map((zone, index) => (
                     !zone.isReserve

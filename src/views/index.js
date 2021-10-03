@@ -8,11 +8,12 @@ import MyEvent from './MyEvent';
 import EventSetting from './EventSetting';
 import Reserve from './Reserve';
 import NotFound from './NotFound';
+import MyZone from './MyZone';
 
 import Test from './Test';
 
 const views = {
-    Home, Login, Register, Event, HostEvent, Test, Account, MyEvent, EventSetting, Reserve, NotFound
+    Home, Login, Register, Event, HostEvent, Test, Account, MyEvent, EventSetting, Reserve, MyZone, NotFound
 }
 
 export default views;

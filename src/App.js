@@ -27,6 +27,7 @@ function App() {
             <Route exact path="/host" component={Views.HostEvent} />
             <Route exact path="/me" component={Views.Account} />
             <Route exact path="/myevent" component={Views.MyEvent} />
+            <Route exact path="/myzone" component={Views.MyZone} />
 
             <Route path="/test" component={Views.Test} />
             <Route component={Views.NotFound} />

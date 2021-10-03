@@ -27,7 +27,7 @@ const Zone = ({ zone }) => {
 
     return (
         <Card>
-            <form>
+            <form onSubmit={handleUpdateBtn}>
                 <div>
                     <label className="form-label">ชื่อพื้นที่</label>
                     <input type="text" className="form-control" value={update.name} required onChange={
@@ -36,11 +36,11 @@ const Zone = ({ zone }) => {
                 </div>
                 <div>
                     <label className="form-label">ราคาพื้นที่</label>
-                    <input type="number" className="form-control" min="1" value={update.price} required onChange={
+                    <input type="number" className="form-control" min="1" max="100000" value={update.price} required onChange={
                         (e) => setUpdate(Object.assign({}, update, { price: e.target.value }))
                     } />
                 </div>
-                <button className="btn btn-primary mt-2" type="submit" onClick={handleUpdateBtn}>อัพเดท</button>
+                <button className="btn btn-primary mt-2" type="submit">อัพเดท</button>
             </form>
         </Card>
     );

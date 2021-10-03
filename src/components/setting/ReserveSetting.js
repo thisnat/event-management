@@ -7,7 +7,7 @@ import ZoneSetting from './ZoneSetting';
 import axios from 'axios';
 import { API_BASE } from '../../constant/api';
 
-const ReserveSetting = () => {
+const ReserveSetting = ({eventName}) => {
 
     const user = useStore(state => state.user);
     const eventId = useStore(state => state.eventId);
@@ -19,6 +19,7 @@ const ReserveSetting = () => {
         info: "",
         pic: "test",
         eventId: eventId,
+        eventName : eventName,
         price: 0
     });
 

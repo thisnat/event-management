@@ -6,13 +6,16 @@ const Reserve = () => {
     const eventData = useStore(state => state.eventData);
 
     if(!eventData.canReserve){
-        return <ReserveSetting />
+        return <ReserveSetting eventName={eventData.name}/>
     }
 
     return (
         <div className="mt-4">
             <DataTable 
             title="การจองพื้นที่ รออนุมัติ"/>
+            <hr />
+            <DataTable 
+            title="การจองพื้นที่"/>
         </div>
     );
 };

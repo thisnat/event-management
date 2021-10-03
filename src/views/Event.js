@@ -61,14 +61,14 @@ const Event = (props) => {
         return (
             <div className="container my-5">
                 <div className="row">
-                    <div className="col-sm-3">
+                    <div className="col-md-3">
                         {
                             eventData.hostData
                                 ? <Host user={eventData.hostData} />
                                 : null
                         }
                     </div>
-                    <div className="col-sm-9">
+                    <div className="col-md-9">
                         <div style={{ maxWidth: 550, margin: "auto" }}>
                             <EventCard data={eventData} />
                             <div className="lang-th" style={{ textAlign: "center" }}>
@@ -92,7 +92,6 @@ const Event = (props) => {
                                 <MoreDetail data={eventData} />
                             </div>
                         </div>
-                        <p className="text-muted lang-th">Event ID : {eventId}</p>
                     </div>
                 </div>
             </div>
