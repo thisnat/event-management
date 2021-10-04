@@ -1,5 +1,20 @@
 import { DateTime } from 'luxon'
 
+function getStatus(status) {
+    if (status === 0) {
+        return <span className="badge rounded-pill bg-warning text-dark">กำลังดำเนินการ</span>
+    } 
+    else if (status === 1) {
+        return <span className="badge rounded-pill bg-success">สำเร็จ</span>
+    }
+    else if (status === 2) {
+        return <span className="badge rounded-pill bg-danger">ยกเลิก</span>
+    }
+    else {
+        return <span className="badge rounded-pill bg-secondary">null</span>
+    }
+}
+
 export const joinColumns = [
     {
         name: 'ชื่ออีเว้นท์',
@@ -52,3 +67,26 @@ export const joinList = [
         selector: row => DateTime.fromISO(row.joinDate).toLocaleString(DateTime.DATETIME_SHORT),
     },
 ];
+
+export const zoneList = [
+    {
+        name : 'อีเว้นท์',
+        selector: row => <a href={`/event/${row.eventId}`}>{row.eventName}</a>,
+    },
+    {
+        name : 'ชื่อพื้นที่',
+        selector: row => row.zoneName,
+    },
+    {
+        name : 'ราคา',
+        selector: row => row.zonePrice,
+    },
+    {
+        name : 'สถานะ',
+        selector: row => getStatus(row.status),
+    },
+    {
+        name : 'รายละเอียด',
+        selector: row => <button className="btn btn-primary">แจ้งชำระ</button>
+    },
+]

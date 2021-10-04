@@ -22,9 +22,8 @@ const Reserve = (props) => {
         e.preventDefault();
 
         if (zoneId) {
-            patchWithToken(`/zone/reserve/${zoneId}`, { isReserve: true }).then(res => {
-                //redirect to some page
-                console.log("done");
+            patchWithToken(`/zone/reserve/${zoneId}`, { eventId : eventData._id, eventName : eventData.name }).then(res => {
+                window.location.replace("/myzone");
             })
         } else {
             alert("กรุณาเลือกพื้นที่")
