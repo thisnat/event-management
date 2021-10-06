@@ -1,4 +1,5 @@
-import { DateTime } from 'luxon'
+import { DateTime } from 'luxon';
+import { confirmPayment, cancelPayment } from '../service/payment';
 
 function getStatus(status) {
     if (status === 0) {
@@ -122,8 +123,27 @@ export const confirmList = [
     {
         name : 'ดำเนินการ',
         selector: row => <div>
-            <button className="btn btn-success me-2">ยอมรับ</button>
-            <button className="btn btn-danger">ยกเลิก</button>
+            <button className="btn btn-success me-2" onClick={() => confirmPayment(row._id)}>ยอมรับ</button>
+            <button className="btn btn-danger" onClick={() => cancelPayment(row._id)}>ยกเลิก</button>
         </div>,
+    },
+]
+
+export const paidList = [
+    {
+        name : 'ผู้จองพื้นที่',
+        selector: row => row.username,
+    },
+    {
+        name : 'พื้นที่',
+        selector: row => row.zoneName,
+    },
+    {
+        name : 'ราคา',
+        selector: row => row.zonePrice,
+    },
+    {
+        name : 'ยืนยันเมื่อ',
+        selector: row => DateTime.fromISO(row.update_at).toLocaleString(DateTime.DATETIME_SHORT),
     },
 ]
