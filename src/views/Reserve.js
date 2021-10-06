@@ -57,7 +57,7 @@ const Reserve = (props) => {
             <div className="row mt-5">
                 <Card className="col-md">
                     <h5>ช่องทางการชำระเงิน</h5>
-                    <p className="ms-2">{reserveData.paymentInfo}</p>
+                    <p className="ms-2" style={{fontSize:"1.4rem"}}>{reserveData.paymentInfo}</p>
                     <h5>รายละเอียดการจองพื้นที่</h5>
                     <p className="ms-2">{reserveData.info}</p>
                 </Card>
