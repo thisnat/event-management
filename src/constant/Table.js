@@ -1,6 +1,8 @@
 import { DateTime } from 'luxon';
 import { confirmPayment, cancelPayment } from '../service/payment';
 
+import { CONTENT_URL } from '../constant/api';
+
 function getStatus(status) {
     if (status === 0) {
         return <span className="badge rounded-pill bg-secondary">รอการชำระเงิน</span>
@@ -118,7 +120,7 @@ export const confirmList = [
     },
     {
         name : 'หลักฐานการชำระ',
-        selector: row => <button className="btn btn-primary">สลิป</button>,
+        selector: row => <a className="btn btn-primary" href={`${CONTENT_URL}${row.pic}`} target="_blank" rel="noreferrer">สลิป</a>,
     },
     {
         name : 'ดำเนินการ',

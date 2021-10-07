@@ -7,6 +7,7 @@ import { ReserveZone } from '../style/Image';
 import { Card } from '../style/Card';
 import ReserveSelect from '../components/event/ReserveSelect';
 import { patchWithToken } from '../service/api';
+import { CONTENT_URL } from '../constant/api';
 
 const Reserve = (props) => {
 
@@ -52,7 +53,7 @@ const Reserve = (props) => {
         <div className="container my-4 lang-th">
             <h1>{eventData.name} / จองพื้นที่</h1>
             <div className="text-center mt-4">
-                <ReserveZone src="https://demo.warptheme.com/images/placeholder_600x400.svg" />
+                <ReserveZone src={`${CONTENT_URL}${reserveData.pic}`} />
             </div>
             <div className="row mt-5">
                 <Card className="col-md">

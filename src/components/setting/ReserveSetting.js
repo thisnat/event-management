@@ -7,7 +7,7 @@ import ZoneSetting from './ZoneSetting';
 import axios from 'axios';
 import { API_BASE } from '../../constant/api';
 
-const ReserveSetting = ({eventName}) => {
+const ReserveSetting = ({ eventName }) => {
 
     const user = useStore(state => state.user);
     const eventId = useStore(state => state.eventId);
@@ -17,11 +17,12 @@ const ReserveSetting = ({eventName}) => {
         maxReserve: 1,
         paymentInfo: "",
         info: "",
-        pic: "test",
+        pic: "",
         eventId: eventId,
-        eventName : eventName,
+        eventName: eventName,
         price: 0
     });
+    const [file, setFile] = useState([]);
 
     useEffect(() => {
         //useEffect clenup 
@@ -47,9 +48,17 @@ const ReserveSetting = ({eventName}) => {
     const handleSumbmitBtn = (e) => {
         e.preventDefault()
 
-        postWithToken("/reserve/create", input).then(() => {
-            window.location.replace("./setting");
-        })
+        if (file.length === 0) {
+            alert("กรุณาเลือกรูปรูปแสดงพื้นที่ภายในงาน")
+        } else {
+            let formData = new FormData();
+            formData.append("content", file);
+            formData.append("data", JSON.stringify(input));
+
+            postWithToken("/upload/reserve", formData).then(() => {
+                window.location.replace("./setting");
+            })
+        }
     }
 
     if (reserve) {
@@ -86,8 +95,10 @@ const ReserveSetting = ({eventName}) => {
                         <p className="text-muted mt-2">** พื้นที่ราคาพิเศษจะสามารถตั้งค่าได้หลังจากนี้</p>
                     </div>
                     <div className="col-md">
-                        <p>รูปแสดงพื้นที่ภายในงาน</p>
-                        <button className="btn btn-primary" onClick={(e) => e.preventDefault()}>เลือก</button>
+                        <label className="form-label">รูปแสดงพื้นที่ภายในงาน</label>
+                        <input type="file" className="form-control" accept="image/png, image/jpeg" onChange={
+                            (e) => setFile(e.target.files[0])
+                        } />
                     </div>
                 </div>
                 <button type="submit" className="btn btn-success mt-5">ยืนยัน</button>
