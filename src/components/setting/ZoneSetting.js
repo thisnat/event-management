@@ -40,7 +40,7 @@ const ZoneSetting = () => {
 
     return (
         <div>
-            <h4 className="mt-4">✨ ตั้งค่าชื่อ, ราคาแต่ละพื้นที่</h4>
+            <h4 className="mt-4">ตั้งค่าชื่อ, ราคาแต่ละพื้นที่</h4>
             <div className="row mt-4">
                 {
                     zoneList
