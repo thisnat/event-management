@@ -67,7 +67,7 @@ const Reserve = (props) => {
                     <p className="text-muted mt-2">เหลือพื้นที่ {eventData.maxReserve - eventData.reserve} พื้นที่</p>
                     <h2>ราคา {price} บาท</h2>
                     <p className="text-muted">id : {zoneId}</p>
-                    <button className="btn btn-success mt-4" onClick={handleReserveBtn}>จองพื้นที่</button>
+                    <button className="btn btn-success" onClick={handleReserveBtn}>จองพื้นที่</button>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { getWithToken, patchWithToken } from "../service/api";
 import Host from "../components/event/Host";
 import { DateTime } from "luxon";
 import { successToast, changePasswordAlert } from "../service/alert";
+import ProfilePicUpload from "../components/ProfilePicUpload";
 
 const Account = () => {
 
@@ -114,9 +115,7 @@ const Account = () => {
                                     e.preventDefault();
                                     changePasswordAlert();
                                 }}>เปลี่ยน Password</button>
-                                <button className="btn btn-secondary ms-4" onClick={(e) => {
-                                    e.preventDefault();
-                                }}>เปลี่ยนรูปประจำตัว</button>
+                                 <ProfilePicUpload />
                             </div>
                         </div>
                     </form>
