@@ -3,7 +3,7 @@
   <img src="https://i.imgur.com/CA2Kcxv.png" style="width:500px;" />
 </div>
 
-Event Mangement app for CS-project.
+Event Mangement Web Application for CS-project.
 > server :  [here](https://github.com/thisnat/event-management-server)\
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
